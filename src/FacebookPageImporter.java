@@ -5,10 +5,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 public class FacebookPageImporter {
-    public static void importFacebookPage(String url, String email, String password) {
+    public static void importFacebookPage(String url, String email, String password, String pathChromedriver) {
+
         // Create a new instance of the Chrome driver
-        // "C:\\Users\\robin\\OneDrive\\Documenten\\Thomas More\\Semester2\\Practice Enterprise\\practice-enterprise\\chromedriver_win32\\chromedriver.exe"
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\robin\\OneDrive\\Documenten\\Thomas More\\Semester2\\Practice Enterprise\\practice-enterprise\\chromedriver_win32\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", pathChromedriver);
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-notifications");
         WebDriver driver = new ChromeDriver(options);
