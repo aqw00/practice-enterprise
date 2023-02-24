@@ -7,7 +7,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class FacebookPageImporter {
     public static void importFacebookPage(String url, String email, String password) {
         // Create a new instance of the Chrome driver
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\aqw00\\Downloads\\chromedriver_win32\\chromedriver.exe");
+        // "C:\\Users\\robin\\OneDrive\\Documenten\\Thomas More\\Semester2\\Practice Enterprise\\practice-enterprise\\chromedriver_win32\\chromedriver.exe"
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\robin\\OneDrive\\Documenten\\Thomas More\\Semester2\\Practice Enterprise\\practice-enterprise\\chromedriver_win32\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-notifications");
         WebDriver driver = new ChromeDriver(options);
@@ -25,7 +26,7 @@ public class FacebookPageImporter {
 
         // Submit the login form
         WebElement loginButton = driver.findElement(By.name("login"));
-        loginButton.click();
+        loginButton.submit();
 
         // Wait for the login process to complete
         try {
