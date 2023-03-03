@@ -7,6 +7,10 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class FacebookPageImporter {
     public static void importFacebookPage(String url, String email, String password, String pathChromedriver) {
 
+
+        //ReadPasswordFile.readFile();
+
+
         // Create a new instance of the Chrome driver
         System.setProperty("webdriver.chrome.driver", pathChromedriver);
         ChromeOptions options = new ChromeOptions();
