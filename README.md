@@ -1,2 +1,4 @@
 # practice-enterprise
-School project
+## School project:
+
+- __The idea:__ 

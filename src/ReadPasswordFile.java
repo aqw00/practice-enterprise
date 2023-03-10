@@ -11,7 +11,8 @@ public class ReadPasswordFile
     {
         String line = "";
         String splitBy = ";";
-        String fileName = "C:\\Users\\robin\\IdeaProjects\\practice-enterprise\\src\\test.csv";
+        // String fileName = "C:\\Users\\robin\\IdeaProjects\\practice-enterprise\\src\\test.csv";
+        String fileName = "/home/tone/IdeaProjects/practice-enterprise/src/test.csv";
 
         List<String> temps = new ArrayList<>();
         List<String[]> loginCredentials = new ArrayList<>();
