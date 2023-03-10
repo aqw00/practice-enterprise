@@ -1,5 +1,8 @@
+import UI.ApplicationUI;
+
 public class Main {
     public static void main(String[] args) {
+        ApplicationUI.launchUI();
 
         // TODO: make a way to select the website that you want to login
         /* SFTP */
