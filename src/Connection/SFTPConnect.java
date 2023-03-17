@@ -1,3 +1,5 @@
+package Connection;
+
 import com.jcraft.jsch.*;
 public class SFTPConnect {
     public static void connectSFTP (String host, int port, String username, String password, String remoteFilePath, String localFilePath)
