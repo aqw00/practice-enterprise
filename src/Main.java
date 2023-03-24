@@ -6,14 +6,13 @@ import java.awt.event.ActionListener;
 public class Main {
     public static void main(String[] args) {
 
-        // TODO: make a way to select the website that you want to login
         /* SFTP */
         String host = "192.168.1.69";
         int port = 22;
         String username = "sftpuser";
         String SFTP_password = "W@chtwoord"; // TODO: find a way to hide this
         String remoteFilePath = "/shared/test.csv";
-        String localFilePath = "/home/tone/IdeaProjects/practice-enterprise/src/test.csv";
+        //String localFilePath = "/home/tone/IdeaProjects/practice-enterprise/src/test.csv";
 
         //Connection.SFTPConnect.connectSFTP(host, port, username ,SFTP_password, remoteFilePath, localFilePath);
 
@@ -22,13 +21,13 @@ public class Main {
         String email = Reading.ReadPasswordFile.readFile().get(0)[0];
         String password = Reading.ReadPasswordFile.readFile().get(0)[1];
         String browser = Reading.ReadPasswordFile.readFile().get(0)[2];
-        /* TONE */
+        /* TONE
         String pathChrome = "/home/tone/IdeaProjects/practice-enterprise/instalation/linux/chromedriver_linux64/chromedriver";
-        /* ROBIN
-        String pathChrome = "C:\\Users\\robin\\OneDrive\\Documenten\\Thomas More\\Semester2\\Practice Enterprise\\practice-enterprise\\chromedriver_win32\\chromedriver.exe";
          */
-        System.out.println(email + " " + password + " " + browser);
-        System.out.println(Reading.ReadBrowser.chooseBrowser("google"));
+        /* ROBIN*/
+        // String pathChrome = "C:\\Users\\robin\\OneDrive\\Documenten\\Thomas More\\Semester2\\Practice Enterprise\\practice-enterprise\\chromedriver_win32\\chromedriver.exe";
+
+
         // UI.ApplicationUI.AccessHTMLPage(pathChrome); //start ui html
         //FacebookPageImporter.importFacebookPage(url,email, password, pathChrome); start driver with facebook
 
@@ -39,47 +38,47 @@ public class Main {
         // Create a JPanel with a GridLayout and add four buttons to it
         JPanel panel = new JPanel(new GridLayout(5, 5));
 
-        JButton button1 = new JButton("Button 1");
-        panel.add(button1);
+        JButton btnFacebook = new JButton("Facebook");
+        panel.add(btnFacebook);
 
-        JButton button2 = new JButton("Button 2");
-        panel.add(button2);
+        JButton btnGoogle = new JButton("Google");
+        panel.add(btnGoogle);
 
-        JButton button3 = new JButton("Button 3");
-        panel.add(button3);
+        JButton btnAmazon = new JButton("Amazon");
+        panel.add(btnAmazon);
 
-        JButton button4 = new JButton("Button 4");
-        panel.add(button4);
+        JButton btnGitHub = new JButton("GitHub");
+        panel.add(btnGitHub);
 
-        JButton button5 = new JButton("Button 3");
-        panel.add(button5);
+        JButton btnInstagram = new JButton("Instagram");
+        panel.add(btnInstagram);
 
-        JButton button6 = new JButton("Button 4");
-        panel.add(button6);
+        JButton btnNetflix = new JButton("Netflix");
+        panel.add(btnNetflix);
 
-        JButton button7 = new JButton("Button 3");
-        panel.add(button7);
+        JButton btnThomasMore = new JButton("Thomas More");
+        panel.add(btnThomasMore);
 
-        JButton button8 = new JButton("Button 4");
-        panel.add(button8);
+        JButton btnSpotify = new JButton("Spotify");
+        panel.add(btnSpotify);
 
-        JButton button9 = new JButton("Button 3");
-        panel.add(button9);
+        JButton btnSteam = new JButton("Steam");
+        panel.add(btnSteam);
 
-        JButton button10 = new JButton("Button 4");
-        panel.add(button10);
+        JButton btnOutlook = new JButton("Outlook");
+        panel.add(btnOutlook);
 
         // Add ActionListeners to the buttons
-        button1.addActionListener(e -> System.out.println("Button 1 clicked!"));
-        button2.addActionListener(e -> System.out.println("Button 2 clicked!"));
-        button3.addActionListener(e -> System.out.println("Button 3 clicked!"));
-        button4.addActionListener(e -> System.out.println("Button 4 clicked!"));
-        button5.addActionListener(e -> System.out.println("Button 5 clicked!"));
-        button6.addActionListener(e -> System.out.println("Button 6 clicked!"));
-        button7.addActionListener(e -> System.out.println("Button 7 clicked!"));
-        button8.addActionListener(e -> System.out.println("Button 8 clicked!"));
-        button9.addActionListener(e -> System.out.println("Button 9 clicked!"));
-        button10.addActionListener(e -> System.out.println("Button 10 clicked!"));
+        btnFacebook.addActionListener(e -> System.out.println("Choice: Facebook!"));
+        btnGoogle.addActionListener(e -> System.out.println("Choice: Google!"));
+        btnAmazon.addActionListener(e -> System.out.println("Choice: Amazon!"));
+        btnGitHub.addActionListener(e -> System.out.println("Choice: GitHub!"));
+        btnInstagram.addActionListener(e -> System.out.println("Choice: Instagram!"));
+        btnNetflix.addActionListener(e -> System.out.println("Choice: Netflix!"));
+        btnThomasMore.addActionListener(e -> System.out.println("Choice: Thomas More!"));
+        btnSpotify.addActionListener(e -> System.out.println("Choice: Spotify!"));
+        btnSteam.addActionListener(e -> System.out.println("Choice: Steam!"));
+        btnOutlook.addActionListener(e -> System.out.println("Choice: Outlook!"));
 
         // Add the JPanel to the JFrame and make it visible
         frame.add(panel);
