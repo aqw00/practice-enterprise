@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,21 +10,16 @@ public class Main {
         String username = "sftpuser";
         String SFTP_password = "W@chtwoord"; // TODO: find a way to hide this
         String remoteFilePath = "/shared/test.csv";
-        String localFilePath = "/home/tone/IdeaProjects/practice-enterprise/src/test.csv";
-
-
+        //String localFilePath = "/home/tone/IdeaProjects/practice-enterprise/src/test.csv";
+        String localFilePath = "C:\\Users\\robin\\IdeaProjects\\practice-enterprise\\src\\test.csv";
         String url = "";
 
 
-        /* TONE*/
-        String pathChrome = "/home/tone/IdeaProjects/practice-enterprise/instalation/linux/chromedriver_linux64/chromedriver";
+        /* TONE */
+        //String pathChrome = "/home/tone/IdeaProjects/practice-enterprise/instalation/linux/chromedriver_linux64/chromedriver";
+        /* ROBIN */
+        String pathChrome = "C:\\Users\\robin\\OneDrive\\Documenten\\Thomas More\\Semester2\\Practice Enterprise\\intellij\\instalation\\chromedriver.exe";
 
-        /* ROBIN*/
-        // String pathChrome = "C:\\Users\\robin\\OneDrive\\Documenten\\Thomas More\\Semester2\\Practice Enterprise\\practice-enterprise\\chromedriver_win32\\chromedriver.exe";
-
-
-        // UI.ApplicationUI.AccessHTMLPage(pathChrome); //start ui html
-        //FacebookPageImporter.importFacebookPage(url,email, password, pathChrome);
 
         // Create a JFrame and set its size
         JFrame frame = new JFrame("My UI");
@@ -85,7 +78,6 @@ public class Main {
         // Add the JPanel to the JFrame and make it visible
         frame.add(panel);
         frame.setVisible(true);
-
 
     }
 }

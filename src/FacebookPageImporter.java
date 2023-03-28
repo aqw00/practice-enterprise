@@ -5,20 +5,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 public class FacebookPageImporter {
-    public static void importFacebookPage(String url, String email, String password, String pathChromedriver, String usernamePosition, String passwordPosition, String buttonPosition) {
-
-
-        //ReadPasswordFile.readFile();
-
-
+    public static void importFacebookPage(String url, String email, String password, String pathChromedriver, String usernamePosition, String passwordPosition, String buttonPosition)
+    {
         // Create a new instance of the Chrome driver
         System.setProperty("webdriver.chrome.driver", pathChromedriver);
-        /*
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-notifications");
-        WebDriver driver = new ChromeDriver(options);
-        */
         WebDriver driver = new ChromeDriver();
+
         // Navigate to the Facebook login page
         driver.get(url);
 
@@ -32,8 +24,7 @@ public class FacebookPageImporter {
 
         // Submit the login form
         WebElement loginButton = driver.findElement(By.name(buttonPosition));
-        //loginButton.submit();
-
+        //TODO: loginButton.submit();
 
         // Wait for the login process to complete
         try {
@@ -41,20 +32,6 @@ public class FacebookPageImporter {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        /*
-        // Navigate to the Facebook page to import
-        driver.get("https://www.facebook.com/pages/import");
-
-        // Wait for the page to load
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        */
-        // Import the page
-        WebElement importButton = driver.findElement(By.xpath("//button[contains(text(), 'Import Page')]"));
-        //importButton.click();
 
         // Close the browser
         driver.quit();

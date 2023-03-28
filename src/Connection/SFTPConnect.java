@@ -5,7 +5,8 @@ public class SFTPConnect {
     public static void connectSFTP (String host, int port, String username, String password, String remoteFilePath, String localFilePath)
     {
         JSch jsch = new JSch();
-        try {
+        try
+        {
             Session session = jsch.getSession(username, host, port);
             session.setPassword(password);
             session.setConfig("StrictHostKeyChecking", "no");
@@ -18,9 +19,10 @@ public class SFTPConnect {
 
             channelSftp.disconnect();
             session.disconnect();
-        } catch (JSchException | SftpException e) {
+        }
+        catch (JSchException | SftpException e)
+        {
             e.printStackTrace();
         }
     }
-
 }
