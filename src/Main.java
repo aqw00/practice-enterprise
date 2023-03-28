@@ -62,6 +62,7 @@ public class Main {
                     String password = Reading.ReadPasswordFile.readFile().get(i)[1];
                     String browser = "https://www.facebook.com/";
                     FacebookPageImporter.importFacebookPage(browser, email, password, pathChrome, "email", "pass", "login");
+                    return;
                 } else {
                     System.out.println("Sorry there is no login");
                 }

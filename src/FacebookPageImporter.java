@@ -34,6 +34,6 @@ public class FacebookPageImporter {
         }
 
         // Close the browser
-        driver.quit();
+        //driver.quit();
     }
 }
