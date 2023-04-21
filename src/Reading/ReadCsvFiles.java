@@ -7,16 +7,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReadingSiteData {
-    public static List<String[]> readFile()
+public class ReadCsvFiles
+{
+    public static List<String[]> readFile(String fileName)
     {
         String line = "";
         String splitBy = ";";
-        // String fileName = "C:\\Users\\robin\\IdeaProjects\\practice-enterprise\\src\\test.csv";
-        String fileName = "/home/tone/IdeaProjects/practice-enterprise/src/test.csv";
 
         List<String> temps = new ArrayList<>();
         List<String[]> loginCredentials = new ArrayList<>();
+
         try
         {
             BufferedReader br = new BufferedReader(new FileReader(fileName));
@@ -27,9 +27,14 @@ public class ReadingSiteData {
 
             for (String str:temps)
             {
-                loginCredentials.add(str.split(splitBy));
+               loginCredentials.add(str.split(splitBy));
             }
 
+//            for (int i = 0; i < loginCredentials.size(); i++)
+//            {
+//                System.out.println(loginCredentials.get(i)[0]);
+//                System.out.println(loginCredentials.get(i)[1]);
+//            }
             br.close();
 
             return loginCredentials;
@@ -49,3 +54,4 @@ public class ReadingSiteData {
         return null;
     }
 }
+

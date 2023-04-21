@@ -4,22 +4,28 @@ import java.awt.event.ActionEvent;
 
 public class Main {
     public static void main(String[] args) {
+        /*
+        *   String fileName = "C:\\Users\\robin\\IdeaProjects\\practice-enterprise\\src\\test.csv";
+        *   String fileName = "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\test.csv";
+        *   String fileName = "/home/tone/IdeaProjects/practice-enterprise/src/test.csv";
+        * */
 
         /* SFTP */
         String host = "192.168.1.69";
         int port = 22;
         String username = "sftpuser";
         String SFTP_password = "W@chtwoord"; // TODO: find a way to hide this
-        String remoteFilePath = "/shared/test.csv";
-        String localFilePath = "/home/tone/IdeaProjects/practice-enterprise/src/test.csv";
-        //String localFilePath = "C:\\Users\\robin\\IdeaProjects\\practice-enterprise\\src\\test.csv";
+        String remoteFilePath = "/shared/websiteInfo.csv";
+        String localFilePath = "/home/tone/IdeaProjects/practice-enterprise/src/websiteInfo.csv";
+        //String localFilePath = "C:\\Users\\robin\\IdeaProjects\\practice-enterprise\\src\\websiteInfo.csv";
         String url = "";
 
 
         /* TONE */
-        String pathChrome = "/home/tone/IdeaProjects/practice-enterprise/instalation/linux/chromedriver_linux64/chromedriver";
+        // String pathChrome = "/home/tone/IdeaProjects/practice-enterprise/instalation/linux/chromedriver_linux64/chromedriver";
+        String pathChrome = "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\instalation\\chromedriver.exe";
         /* ROBIN */
-        //String pathChrome = "C:\\Users\\robin\\OneDrive\\Documenten\\Thomas More\\Semester2\\Practice Enterprise\\intellij\\instalation\\chromedriver.exe";
+        // String pathChrome = "C:\\Users\\robin\\OneDrive\\Documenten\\Thomas More\\Semester2\\Practice Enterprise\\intellij\\instalation\\chromedriver.exe";
 
 
         // Create a JFrame and set its size

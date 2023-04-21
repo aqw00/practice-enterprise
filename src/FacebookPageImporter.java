@@ -1,26 +1,29 @@
-import Reading.ReadingSiteData;
+import Reading.ReadCsvFiles;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 
 public class FacebookPageImporter {
     public static void importFacebookPage( String pathChromedriver, String siteName)
     {
-        String url = "", email = "", password = "", usernamePosition = "", passwordPosition = "", buttonPosition = "";
+        String url = "", email = "", password = "", usernamePosition = null, passwordPosition = null, buttonPosition = null;
         /*
                 GET DATA FROM FILE
          */
-        for (int i = 0; i < (ReadingSiteData.readFile().size()); i++) {
-            if(ReadingSiteData.readFile().get(i)[0].equals(siteName))
+        // String fileName = "C:\\Users\\robin\\IdeaProjects\\practice-enterprise\\src\\websiteInfo.csv";
+        // String fileName = "/home/tone/IdeaProjects/practice-enterprise/src/websiteInfo.csv";
+        String fileName = "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\websiteInfo.csv";
+
+        for (int i = 0; i < (ReadCsvFiles.readFile(fileName).size()); i++) {
+            if(ReadCsvFiles.readFile(fileName).get(i)[0].equals(siteName))
             {
-                url = ReadingSiteData.readFile().get(i)[1];
-                email = ReadingSiteData.readFile().get(i)[2];
-                password = ReadingSiteData.readFile().get(i)[3];
-                usernamePosition = ReadingSiteData.readFile().get(i)[4];
-                passwordPosition = ReadingSiteData.readFile().get(i)[5];
-                buttonPosition = ReadingSiteData.readFile().get(i)[6];
+                url = ReadCsvFiles.readFile(fileName).get(i)[1];
+                email = ReadCsvFiles.readFile(fileName).get(i)[2];
+                password = ReadCsvFiles.readFile(fileName).get(i)[3];
+                usernamePosition = ReadCsvFiles.readFile(fileName).get(i)[4];
+                passwordPosition = ReadCsvFiles.readFile(fileName).get(i)[5];
+                buttonPosition = ReadCsvFiles.readFile(fileName).get(i)[6];
             }
             else
             {
