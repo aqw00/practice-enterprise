@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46f4fce0-e2ad-42a5-bd30-04eef2b75f27" name="Changes" comment="Added login function (JS)&#10;Added wrong user and password pages.">
+    <list default="true" id="46f4fce0-e2ad-42a5-bd30-04eef2b75f27" name="Changes" comment="Rename function + added legend in websiteInfo.csv">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AutoLoginProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/AutoLoginProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WebsitePageImporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WebsitePageImporter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,12 +45,12 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/robin/IdeaProjects/practice-enterprise/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/lib&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/robin/IdeaProjects/practice-enterprise/instalation/selenium-server-4.8.2.jar&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
@@ -96,7 +99,42 @@
       <option name="project" value="LOCAL" />
       <updated>1679058885622</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Changed login.js file&#10;(just changed the buildup)">
+      <created>1679066137363</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1679066137363</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Button Names and texts">
+      <created>1679663245857</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1679663245857</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Prepared for presentation&#10;and code cleanup">
+      <created>1680002478389</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1680002478389</updated>
+    </task>
+    <task id="LOCAL-00008" summary="stopped quit function">
+      <created>1680024905905</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1680024905905</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Rename function + added legend in websiteInfo.csv">
+      <created>1682407744077</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1682407744077</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,7 +155,12 @@
     <MESSAGE value="Fix login button" />
     <MESSAGE value="Added fileReader for csv file&#10;Autofill first line" />
     <MESSAGE value="Added login function (JS)&#10;Added wrong user and password pages." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added login function (JS)&#10;Added wrong user and password pages." />
+    <MESSAGE value="Changed login.js file&#10;(just changed the buildup)" />
+    <MESSAGE value="Button Names and texts" />
+    <MESSAGE value="Prepared for presentation&#10;and code cleanup" />
+    <MESSAGE value="stopped quit function" />
+    <MESSAGE value="Rename function + added legend in websiteInfo.csv" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rename function + added legend in websiteInfo.csv" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
