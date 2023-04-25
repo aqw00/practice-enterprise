@@ -4,8 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class FacebookPageImporter {
-    public static void importFacebookPage( String pathChromedriver, String siteName)
+public class WebsitePageImporter {
+    public static void importWebsitePage(String pathChromedriver, String siteName)
     {
         String url = "", email = "", password = "", usernamePosition = null, passwordPosition = null, buttonPosition = null;
         /*

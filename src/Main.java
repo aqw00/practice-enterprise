@@ -48,7 +48,7 @@ public class Main {
                 }
                 else
                 {
-                    FacebookPageImporter.importFacebookPage(pathChrome, item);
+                    WebsitePageImporter.importWebsitePage(pathChrome, item);
                 }
 
                 // System.out.println("Button " + item + " clicked.");
