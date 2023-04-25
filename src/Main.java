@@ -3,6 +3,7 @@ import Reading.readTxtFile;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -35,7 +36,7 @@ public class Main {
         frame.setSize(300, 200);
 
         // Array of items
-        String[] items = {"ADD", "Facebook", "Google", "Amazon", "Github", "Instagram", "Netflix", "Thomas_More", "Outlook"};
+        List<String> items = readTxtFile.txtFileHandeling(pathWebsites, true, "");
 
         // Create a JPanel with a GridLayout and add four buttons to it
         JPanel panel = new JPanel(new GridLayout(5, 2));
