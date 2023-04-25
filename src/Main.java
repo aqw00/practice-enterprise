@@ -29,7 +29,7 @@ public class Main {
         //String pathChrome = "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\instalation\\chromedriver.exe";
         /* ROBIN */
          String pathChrome = "C:\\Users\\robin\\OneDrive\\Documenten\\Thomas More\\Semester2\\Practice Enterprise\\intellij\\instalation\\chromedriver.exe";
-         String pathWebsites = "C:\\Users\\robin\\OneDrive\\Documenten\\Thomas More\\Semester2\\Practice Enterprise\\src\\buttonWebsites.txt";
+         String pathWebsites = "C:\\Users\\robin\\IdeaProjects\\practice-enterprise\\src\\buttonWebsites.txt";
 
         // Create a JFrame and set its size
         JFrame frame = new JFrame("My UI");
@@ -48,6 +48,7 @@ public class Main {
                 if(item.equals("ADD"))
                 {
                     frame.setVisible(false);
+
                     System.out.println("Button " + item + " clicked.");
                     // Create JFrame and set size for AddWebsite
                     JFrame form = new JFrame("Add Website");
@@ -145,6 +146,5 @@ public class Main {
         // Add the JPanel to the JFrame and make it visible
         frame.add(panel);
         frame.setVisible(true);
-
     }
 }
