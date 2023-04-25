@@ -3,8 +3,7 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 instalation/linux/
-.idea/shelf/
-
+.idea
 
 ### Eclipse ###
 .apt_generated
