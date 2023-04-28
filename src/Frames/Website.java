@@ -27,6 +27,16 @@ public class Website extends JFrame {
 
         for (String item : items) {
             JButton button = new JButton(item); // Create a new JButton with the text of the current item
+
+            // set color of button
+            if(item.equals("ADD"))
+            {
+                button.setBackground(Color.GREEN);
+            } else if (item.equals("CLOSE"))
+            {
+                button.setBackground(Color.RED);
+            }
+
             button.addActionListener((ActionEvent e) -> {
                 // Handle the button click event here
                 if(item.equals("CLOSE"))
