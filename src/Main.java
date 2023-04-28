@@ -1,8 +1,10 @@
-import Reading.readTxtFile;
+import Reading.ReadTxtFile;
+import Reading.WriteCsvFiles;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -23,20 +25,23 @@ public class Main {
         String localFilePath = "C:\\Users\\robin\\IdeaProjects\\practice-enterprise\\src\\websiteInfo.csv";
         String url = "";
 
+        List<String> list = new ArrayList<>();
 
         /* TONE */
         // String pathChrome = "/home/tone/IdeaProjects/practice-enterprise/instalation/linux/chromedriver_linux64/chromedriver";
-        //String pathChrome = "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\instalation\\chromedriver.exe";
+        String pathChrome = "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\instalation\\chromedriver.exe";
+        String pathButtonWebsites = "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\buttonWebsites.txt";
+        String pathWebsiteInfo = "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\websiteInfo.csv";
         /* ROBIN */
-         String pathChrome = "C:\\Users\\robin\\OneDrive\\Documenten\\Thomas More\\Semester2\\Practice Enterprise\\intellij\\instalation\\chromedriver.exe";
-         String pathWebsites = "C:\\Users\\robin\\IdeaProjects\\practice-enterprise\\src\\buttonWebsites.txt";
+        // String pathChrome = "C:\\Users\\robin\\OneDrive\\Documenten\\Thomas More\\Semester2\\Practice Enterprise\\intellij\\instalation\\chromedriver.exe";
+        // String pathButtonWebsites = "C:\\Users\\robin\\IdeaProjects\\practice-enterprise\\src\\buttonWebsites.txt";
 
         // Create a JFrame and set its size
         JFrame frame = new JFrame("My UI");
         frame.setSize(300, 200);
 
         // Array of items
-        List<String> items = readTxtFile.txtFileHandeling(pathWebsites, true, "");
+        List<String> items = ReadTxtFile.txtFileHandeling(pathButtonWebsites, true, "");
 
         // Create a JPanel with a GridLayout and add four buttons to it
         JPanel panel = new JPanel(new GridLayout(5, 2));
@@ -47,9 +52,11 @@ public class Main {
                 // Handle the button click event here
                 if(item.equals("ADD"))
                 {
-                    frame.setVisible(false);
+                    JComponent comp1 = (JComponent) e.getSource();
+                    Window win1 = SwingUtilities.getWindowAncestor(comp1);
+                    win1.dispose();
 
-                    System.out.println("Button " + item + " clicked.");
+                    // System.out.println("Button " + item + " clicked.");
                     // Create JFrame and set size for AddWebsite
                     JFrame form = new JFrame("Add Website");
                     form.setSize(300, 200);
@@ -107,6 +114,7 @@ public class Main {
                         win.dispose();
 
                         //open app window
+                        //TODO: fix frame here that it shows new buttons
                         frame.setVisible(true);
                     });
 
@@ -117,8 +125,13 @@ public class Main {
                     btnConfirm.addActionListener((ActionEvent h) -> {
                         // data opslaan in CSV
 
+                        list.add(txtSite.getText());
+                        list.add(txtUrl.getText());
+                        list.add(txtUser.getText());
+                        list.add(txtPassword.getText());
+                        WriteCsvFiles.writeCsv(pathWebsiteInfo, list);
                         // nieuwe button adden op originele frame
-                        readTxtFile.txtFileHandeling(pathWebsites, false, txtSite.getText());
+                        ReadTxtFile.txtFileHandeling(pathButtonWebsites, false, txtSite.getText());
                         //close website window
                         JComponent comp = (JComponent) h.getSource();
                         Window win = SwingUtilities.getWindowAncestor(comp);

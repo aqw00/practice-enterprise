@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class readTxtFile {
+public class ReadTxtFile {
     public static List<String> txtFileHandeling(String fileName, boolean readOrWrite, String newValue)
     {
         List<String> myArray = new ArrayList<>();
@@ -28,7 +28,7 @@ public class readTxtFile {
         else
         {
             try (FileWriter fw = new FileWriter(fileName, true)) {
-                fw.write(newValue + "\n");
+                fw.write("\n" + newValue );
             } catch (IOException e) {
                 e.printStackTrace();
             }
