@@ -28,9 +28,19 @@ public class Website extends JFrame {
             JButton button = new JButton(item); // Create a new JButton with the text of the current item
             button.addActionListener((ActionEvent e) -> {
                 // Handle the button click event here
+                if(item.equals("CLOSE"))
+                {
+                    // close window
+                    JComponent comp = (JComponent) e.getSource();
+                    Window win = SwingUtilities.getWindowAncestor(comp);
+                    win.dispose();
+
+                    // end program
+                    System.exit(0);
+                }
                 if(item.equals("ADD"))
                 {
-                    addFrame(e, list, frame, pathWebsiteInfo, pathButtonWebsites);
+                    addFrame(e, list, frame, pathWebsiteInfo, pathButtonWebsites, pathChrome);
                 }
                 else
                 {

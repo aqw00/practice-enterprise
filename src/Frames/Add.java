@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.util.List;
 
 public class Add extends JFrame {
-    public static void addFrame(ActionEvent e, List<String> list, JFrame frame, String pathWebsiteInfo, String pathButtonWebsites)
+    public static void addFrame(ActionEvent e, List<String> list, JFrame frame, String pathWebsiteInfo, String pathButtonWebsites, String pathChrome)
     {
         JComponent comp1 = (JComponent) e.getSource();
         Window win1 = SwingUtilities.getWindowAncestor(comp1);
@@ -74,7 +74,7 @@ public class Add extends JFrame {
 
             //open app window
             //TODO: fix frame here that it shows new buttons
-            frame.setVisible(true);
+            Website.webFrame(pathButtonWebsites, pathWebsiteInfo, list, pathChrome);
         });
 
         // add confirm button
@@ -82,8 +82,8 @@ public class Add extends JFrame {
         formPanel.add(btnConfirm);
         // confirm button action
         btnConfirm.addActionListener((ActionEvent h) -> {
-            // data opslaan in CSV
 
+            // data opslaan in CSV
             list.add(txtSite.getText());
             list.add(txtUrl.getText());
             list.add(txtUser.getText());
@@ -97,7 +97,7 @@ public class Add extends JFrame {
             win.dispose();
 
             //open app window
-            frame.setVisible(true);
+            Website.webFrame(pathButtonWebsites, pathWebsiteInfo, list, pathChrome);
         });
 
         // add panel to frame and make visible
