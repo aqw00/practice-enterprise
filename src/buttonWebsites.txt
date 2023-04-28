@@ -1,3 +1,4 @@
+CLOSE
 ADD
 Facebook
 Google
@@ -7,4 +8,4 @@ Instagram
 Netflix
 Thomas_More
 Outlook
-test1
+test

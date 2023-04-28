@@ -17,6 +17,7 @@ public class Website extends JFrame {
         // Create a JFrame and set its size
         JFrame frame = new JFrame("My UI");
         frame.setSize(300, 200);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         // Array of items
         List<String> items = ReadTxtFile.txtFileHandeling(pathButtonWebsites, true, "");
