@@ -146,11 +146,14 @@ public class Edit extends JFrame {
                 list.add(Suser);
                 list.add(Spassword);
                 //verwijder originele lijn uit websiteInfo.csv en buttonWebsites.txt
-                deleteLine(pathWebsiteInfo, pathButtonWebsites, Ssite);
+                deleteLine(pathWebsiteInfo, pathButtonWebsites, Ssite, Suser, Spassword);
+
+                // dit niet doen voor lege lijnen
                 //add veranderde lijn opnieuw
-                WriteCsvFiles.writeCsv(pathWebsiteInfo, list);
+                //WriteCsvFiles.writeCsv(pathWebsiteInfo, list);
                 // nieuwe button adden op originele frame
-                ReadTxtFile.txtFileHandeling(pathButtonWebsites, false, Ssite);
+                //ReadTxtFile.txtFileHandeling(pathButtonWebsites, false, Ssite);
+
                 //close website window
                 JComponent comp = (JComponent) h.getSource();
                 Window win = SwingUtilities.getWindowAncestor(comp);

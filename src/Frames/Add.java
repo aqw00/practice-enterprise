@@ -122,7 +122,7 @@ public class Add extends JFrame {
                 list.add(url);
                 list.add(user);
                 list.add(password);
-                WriteCsvFiles.writeCsv(pathWebsiteInfo, list);
+                WriteCsvFiles.writeCsv(pathWebsiteInfo, list, true);
                 // nieuwe button adden op originele frame
                 ReadTxtFile.txtFileHandeling(pathButtonWebsites, false, txtSite.getText());
                 //close website window

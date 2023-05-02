@@ -36,6 +36,8 @@ public class Website extends JFrame {
             } else if (item.equals("CLOSE"))
             {
                 button.setBackground(Color.RED);
+            } else if (item.equals("EDIT")) {
+                button.setBackground(Color.PINK);
             }
 
             button.addActionListener((ActionEvent e) -> {
