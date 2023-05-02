@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.util.List;
 
 import static Frames.Add.addFrame;
+import static Frames.Edit.editFrame;
 
 public class Website extends JFrame {
     public static void webFrame (String pathButtonWebsites, String pathWebsiteInfo ,List<String> list, String pathChrome)
@@ -52,6 +53,10 @@ public class Website extends JFrame {
                 if(item.equals("ADD"))
                 {
                     addFrame(e, list, frame, pathWebsiteInfo, pathButtonWebsites, pathChrome);
+                }
+                if(item.equals("EDIT"))
+                {
+                    editFrame(e, items, list, frame, pathWebsiteInfo, pathButtonWebsites, pathChrome);
                 }
                 else
                 {
