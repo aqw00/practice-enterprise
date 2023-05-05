@@ -43,5 +43,6 @@ public class Main {
         String pathWebsiteInfo = "C:\\Users\\robin\\IdeaProjects\\practice-enterprise\\src\\websiteInfo.csv";
 
         Website.webFrame(pathButtonWebsites, pathWebsiteInfo, list, pathChrome);
+
     }
 }
