@@ -1,5 +1,6 @@
 CLOSE
 ADD
+EDIT
 Facebook
 Google
 Amazon
@@ -8,4 +9,5 @@ Instagram
 Netflix
 Thomas_More
 Outlook
-test
+&
+s

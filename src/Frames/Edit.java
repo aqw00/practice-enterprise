@@ -16,9 +16,9 @@ import java.util.List;
 public class Edit extends JFrame {
     public static void editFrame(ActionEvent e, List<String> items, List<String> list, JFrame frame, String pathWebsiteInfo, String pathButtonWebsites, String pathChrome)
     {
-        list.remove("ADD");
-        list.remove("CLOSE");
-        list.remove("EDIT");
+        items.remove("ADD");
+        items.remove("EDIT");
+        items.remove("CLOSE");
         String[] array = items.toArray(new String[items.size()]);
 
         String email = "", password = "", url = "";
@@ -51,7 +51,7 @@ public class Edit extends JFrame {
         JLabel lblcbx = new JLabel("Choose website:");
         editPanel.add(lblcbx);
         JComboBox cbxSites = new JComboBox(array);
-        cbxSites.setSelectedIndex(8);
+        cbxSites.setSelectedIndex(7);
         editPanel.add(cbxSites);
 
         for (int i = 0; i < (ReadCsvFiles.readFile(pathWebsiteInfo).size()); i++) {

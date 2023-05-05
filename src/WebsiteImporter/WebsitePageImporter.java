@@ -13,9 +13,9 @@ public class WebsitePageImporter {
         /*
                 GET DATA FROM FILE
          */
-        // String fileName = "C:\\Users\\robin\\IdeaProjects\\practice-enterprise\\src\\websiteInfo.csv";
+         String fileName = "C:\\Users\\robin\\IdeaProjects\\practice-enterprise\\src\\websiteInfo.csv";
         // String fileName = "/home/tone/IdeaProjects/practice-enterprise/src/websiteInfo.csv";
-        String fileName = "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\websiteInfo.csv";
+        //String fileName = "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\websiteInfo.csv";
 
         for (int i = 0; i < (ReadCsvFiles.readFile(fileName).size()); i++) {
             if(ReadCsvFiles.readFile(fileName).get(i)[0].equals(siteName))

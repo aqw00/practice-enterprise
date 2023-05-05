@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.util.List;
 
 public class Add extends JFrame {
-    public static void addFrame(ActionEvent e, List<String> list, JFrame frame, String pathWebsiteInfo, String pathButtonWebsites, String pathChrome)
+    public static void addFrame(ActionEvent e, List<String> csvEditList, JFrame frame, String pathWebsiteInfo, String pathButtonWebsites, String pathChrome)
     {
         JComponent comp1 = (JComponent) e.getSource();
         Window win1 = SwingUtilities.getWindowAncestor(comp1);
@@ -20,6 +20,7 @@ public class Add extends JFrame {
         JFrame form = new JFrame("Add Website");
         form.setSize(300, 200);
         form.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+
         form.addWindowListener(new java.awt.event.WindowAdapter()
         {
             @Override
@@ -28,9 +29,10 @@ public class Add extends JFrame {
                 //close website window
                 form.dispose();
                 //open app window
-                Website.webFrame(pathButtonWebsites, pathWebsiteInfo, list, pathChrome);
+                Website.webFrame(pathButtonWebsites, pathWebsiteInfo, csvEditList, pathChrome);
             }
         });
+
 
         // Create Jpanel with GridLayout
         JPanel formPanel = new JPanel(new GridLayout(7, 2));
@@ -95,7 +97,7 @@ public class Add extends JFrame {
             win.dispose();
 
             //open app window
-            Website.webFrame(pathButtonWebsites, pathWebsiteInfo, list, pathChrome);
+            Website.webFrame(pathButtonWebsites, pathWebsiteInfo, csvEditList, pathChrome);
         });
 
         // add confirm button
@@ -118,11 +120,11 @@ public class Add extends JFrame {
                 lblWarning.setVisible(false);
                 lblWarning.setVisible(false);
                 // data opslaan in CSV
-                list.add(site);
-                list.add(url);
-                list.add(user);
-                list.add(password);
-                WriteCsvFiles.writeCsv(pathWebsiteInfo, list, true);
+                csvEditList.add(site);
+                csvEditList.add(url);
+                csvEditList.add(user);
+                csvEditList.add(password);
+                WriteCsvFiles.writeCsv(pathWebsiteInfo, csvEditList, true);
                 // nieuwe button adden op originele frame
                 ReadTxtFile.txtFileHandeling(pathButtonWebsites, false, txtSite.getText());
                 //close website window
@@ -131,7 +133,7 @@ public class Add extends JFrame {
                 win.dispose();
 
                 //open app window
-                Website.webFrame(pathButtonWebsites, pathWebsiteInfo, list, pathChrome);
+                Website.webFrame(pathButtonWebsites, pathWebsiteInfo, csvEditList, pathChrome);
             }
         });
 

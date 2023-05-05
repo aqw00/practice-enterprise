@@ -4,26 +4,90 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46f4fce0-e2ad-42a5-bd30-04eef2b75f27" name="Changes" comment="Added website-add panel">
+    <list default="true" id="46f4fce0-e2ad-42a5-bd30-04eef2b75f27" name="Changes" comment="Added Edit function (toFix)">
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/legal/javafx.base/ADDITIONAL_LICENSE_INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/legal/javafx.base/ASSEMBLY_EXCEPTION" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/legal/javafx.base/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/legal/javafx.controls/ADDITIONAL_LICENSE_INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/legal/javafx.controls/ASSEMBLY_EXCEPTION" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/legal/javafx.controls/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/legal/javafx.fxml/ADDITIONAL_LICENSE_INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/legal/javafx.fxml/ASSEMBLY_EXCEPTION" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/legal/javafx.fxml/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/legal/javafx.graphics/ADDITIONAL_LICENSE_INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/legal/javafx.graphics/ASSEMBLY_EXCEPTION" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/legal/javafx.graphics/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/legal/javafx.graphics/jpeg_fx.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/legal/javafx.graphics/mesa3d.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/legal/javafx.media/ADDITIONAL_LICENSE_INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/legal/javafx.media/ASSEMBLY_EXCEPTION" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/legal/javafx.media/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/legal/javafx.media/directshow.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/legal/javafx.media/glib.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/legal/javafx.media/gstreamer.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/legal/javafx.media/libffi.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/legal/javafx.swing/ADDITIONAL_LICENSE_INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/legal/javafx.swing/ASSEMBLY_EXCEPTION" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/legal/javafx.swing/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/legal/javafx.web/ADDITIONAL_LICENSE_INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/legal/javafx.web/ASSEMBLY_EXCEPTION" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/legal/javafx.web/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/legal/javafx.web/icu_web.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/legal/javafx.web/libxml2.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/legal/javafx.web/libxslt.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/legal/javafx.web/webkit.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/lib/javafx-swt.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/lib/javafx.base.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/lib/javafx.controls.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/lib/javafx.fxml.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/lib/javafx.graphics.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/lib/javafx.media.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/lib/javafx.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/lib/javafx.swing.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/lib/javafx.web.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instalation/windows/openjfx-19.0.2.1_windows-x86_bin-sdk/javafx-sdk-19.0.2.1/src.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frames/Add.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Frames/Add.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frames/Edit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Frames/Edit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frames/Website.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Frames/Website.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WebsiteImporter/WebsitePageImporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WebsiteImporter/WebsitePageImporter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/buttonWebsites.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/buttonWebsites.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/websiteInfo.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/websiteInfo.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ChangesViewManager" show_ignored="true">
+    <option name="groupingKeys">
+      <option value="directory" />
+      <option value="module" />
+    </option>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="4361752f-8ff8-4499-baa7-e679ccd6ba1b" />
+        <option name="url" value="https://github.com/aqw00/practice-enterprise.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -97,7 +161,35 @@
       <option name="project" value="LOCAL" />
       <updated>1679058885622</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Fixed file location">
+      <created>1682424293231</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1682424293231</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added close program feature">
+      <created>1682684984359</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1682684984359</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Fixed Closing feature for both frames">
+      <created>1682690651343</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1682690651343</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Added Edit function (toFix)">
+      <created>1683022956921</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1683022956921</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,7 +210,11 @@
     <MESSAGE value="Fix login button" />
     <MESSAGE value="Added fileReader for csv file&#10;Autofill first line" />
     <MESSAGE value="Added login function (JS)&#10;Added wrong user and password pages." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added login function (JS)&#10;Added wrong user and password pages." />
+    <MESSAGE value="Fixed file location" />
+    <MESSAGE value="Added close program feature" />
+    <MESSAGE value="Fixed Closing feature for both frames" />
+    <MESSAGE value="Added Edit function (toFix)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Edit function (toFix)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -127,6 +223,11 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

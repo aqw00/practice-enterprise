@@ -37,7 +37,7 @@ public class Website extends JFrame {
             {
                 button.setBackground(Color.RED);
             } else if (item.equals("EDIT")) {
-                button.setBackground(Color.PINK);
+                button.setBackground(Color.YELLOW);
             }
 
             button.addActionListener((ActionEvent e) -> {
@@ -52,11 +52,11 @@ public class Website extends JFrame {
                     // end program
                     System.exit(0);
                 }
-                if(item.equals("ADD"))
+                else if(item.equals("ADD"))
                 {
                     addFrame(e, list, frame, pathWebsiteInfo, pathButtonWebsites, pathChrome);
                 }
-                if(item.equals("EDIT"))
+                else if(item.equals("EDIT"))
                 {
                     editFrame(e, items, list, frame, pathWebsiteInfo, pathButtonWebsites, pathChrome);
                 }

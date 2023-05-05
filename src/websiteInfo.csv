@@ -1,4 +1,5 @@
 Website;url;login_email;login_password;email_location;password_location;login_button;
-Netflix;https://www.netflix.com/nl/login;email;password;userLoginId;password;login;
-Outlook;https://outlook.live.com/owa/?nlp=1;email;password;loginfmt;passwd;login;
-test;f;f;f;
+Netflix;https://www.netflix.com/nl/login;netflixEmailtest;netflixPassword;userLoginId;password;login;
+Outlook;https://outlook.live.com/owa/?nlp=1;outlookEmail;outlookPassword;loginfmt;passwd;login;
+&;&;&;&;
+s;s;s;s;
