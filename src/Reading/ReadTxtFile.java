@@ -7,7 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReadTxtFile {
+public class ReadTxtFile
+{
     public static List<String> txtFileHandeling(String fileName, boolean readOrWrite, String newValue)
     {
         List<String> myArray = new ArrayList<>();

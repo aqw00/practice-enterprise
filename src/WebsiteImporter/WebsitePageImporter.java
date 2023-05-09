@@ -6,18 +6,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class WebsitePageImporter {
+public class WebsitePageImporter
+{
     public static void importWebsitePage(String pathChromedriver, String siteName)
     {
         String url = "", email = "", password = "", usernamePosition = null, passwordPosition = null, buttonPosition = null;
-        /*
-                GET DATA FROM FILE
-         */
+
          String fileName = "C:\\Users\\robin\\IdeaProjects\\practice-enterprise\\src\\websiteInfo.csv";
         // String fileName = "/home/tone/IdeaProjects/practice-enterprise/src/websiteInfo.csv";
         //String fileName = "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\websiteInfo.csv";
 
-        for (int i = 0; i < (ReadCsvFiles.readFile(fileName).size()); i++) {
+        for (int i = 0; i < (ReadCsvFiles.readFile(fileName).size()); i++)
+        {
             if(ReadCsvFiles.readFile(fileName).get(i)[0].equals(siteName))
             {
                 url = ReadCsvFiles.readFile(fileName).get(i)[1];
@@ -27,14 +27,7 @@ public class WebsitePageImporter {
                 passwordPosition = ReadCsvFiles.readFile(fileName).get(i)[5];
                 buttonPosition = ReadCsvFiles.readFile(fileName).get(i)[6];
             }
-            else
-            {
-                //System.out.println(ReadingSiteData.readFile().get(i)[0]);
-            }
-
-
         }
-
 
         // Create a new instance of the Chrome driver
         System.setProperty("webdriver.chrome.driver", pathChromedriver);
@@ -61,8 +54,5 @@ public class WebsitePageImporter {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        // Close the browser
-        //driver.quit();
     }
 }
