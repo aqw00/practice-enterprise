@@ -35,6 +35,19 @@ public class DecryptCsvFile {
         Files.write(Paths.get("data.csv"), decryptedData); // Write decrypted data to file
     }
 
+    private static byte[] hexStringToByteArray(String s)
+    {
+        int len = s.length();
+        byte[] data = new byte[len / 2];
+        for (int i = 0; i < len; i += 2) {
+            data[i / 2] = (byte) ((Character.digit(s.charAt(i), 16) << 4)
+                    + Character.digit(s.charAt(i+1), 16));
+        }
+        return data;
+    }
+
+    // ENCRYPT
+
     public static void encryptCsv(Path decFile, Path encFile) throws Exception
     {
         String[] keyIv = generateKeyAndIv();
@@ -83,16 +96,6 @@ public class DecryptCsvFile {
             sb.append(String.format("%02x", b));
         }
         return sb.toString();
-    }
-    private static byte[] hexStringToByteArray(String s)
-    {
-        int len = s.length();
-        byte[] data = new byte[len / 2];
-        for (int i = 0; i < len; i += 2) {
-            data[i / 2] = (byte) ((Character.digit(s.charAt(i), 16) << 4)
-                    + Character.digit(s.charAt(i+1), 16));
-        }
-        return data;
     }
 
 }

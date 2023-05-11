@@ -27,6 +27,17 @@ import java.util.Base64;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import java.security.Security;
 import java.security.spec.PKCS8EncodedKeySpec;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.security.KeyFactory;
+import java.security.PublicKey;
+import java.security.spec.X509EncodedKeySpec;
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import java.security.Security;
+import java.util.Base64;
 
 
 public class DecryptAESKey {
@@ -44,7 +55,7 @@ public class DecryptAESKey {
         }
     }
 
-    public static byte[] decryptAesKey(Path mePath, Path keyPath, Path filePath, Path ivPath) throws Exception {
+    public static String decryptAesKey(Path mePath, Path keyPath, Path filePath, Path ivPath) throws Exception {
         Security.addProvider(new BouncyCastleProvider());
 
         byte[] encryptedAesKey = Files.readAllBytes(keyPath);
@@ -55,8 +66,39 @@ public class DecryptAESKey {
         cipher.init(Cipher.DECRYPT_MODE, privateKey);
 
         byte[] decryptedData = cipher.doFinal(encryptedAesKey);
-        System.out.println(new String(decryptedData));
-        return decryptedData;
+        String strDecryptedData = new String(decryptedData);
+        System.out.println(strDecryptedData);
+        return strDecryptedData;
+    }
+
+    // ENCRYPT
+
+    public static void encryptAesKey(String publicPath) throws Exception
+    {
+        Security.addProvider(new BouncyCastleProvider());
+
+        SecretKey secretKey = generateAESKey();
+        byte[] encryptedAesKey = encryptAESKey(secretKey, publicPath);
+
+        System.out.println(Base64.getEncoder().encodeToString(encryptedAesKey));
+    }
+
+    private static SecretKey generateAESKey() throws Exception {
+        KeyGenerator generator = KeyGenerator.getInstance("AES");
+        generator.init(256); // The AES key size in number of bits
+        return generator.generateKey();
+    }
+
+    private static byte[] encryptAESKey(SecretKey aesKey, String publicKeyPath) throws Exception {
+        byte[] publicKeyBytes = Files.readAllBytes(Path.of(publicKeyPath));
+        X509EncodedKeySpec spec = new X509EncodedKeySpec(publicKeyBytes);
+        KeyFactory kf = KeyFactory.getInstance("RSA");
+        PublicKey pk = kf.generatePublic(spec);
+
+        Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding", "BC");
+        cipher.init(Cipher.ENCRYPT_MODE, pk);
+
+        return cipher.doFinal(aesKey.getEncoded());
     }
 
 }
