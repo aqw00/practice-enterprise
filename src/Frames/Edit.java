@@ -1,19 +1,15 @@
 package Frames;
 
-import Reading.ReadTxtFile;
 import Reading.ReadCsvFiles;
-import Reading.WriteCsvFiles;
 import static Reading.DelLineCsvFile.deleteLine;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 
-
-
-public class Edit extends JFrame {
+public class Edit extends JFrame
+{
     public static void editFrame(ActionEvent e, List<String> items, List<String> list, JFrame frame, String pathWebsiteInfo, String pathButtonWebsites, String pathChrome)
     {
         items.remove("ADD");
@@ -27,7 +23,6 @@ public class Edit extends JFrame {
         Window win1 = SwingUtilities.getWindowAncestor(comp1);
         win1.dispose();
 
-        // System.out.println("Button " + item + " clicked.");
         // Create JFrame and set size for AddWebsite
         JFrame editFrame = new JFrame("Edit Website");
         editFrame.setSize(300, 200);
@@ -37,9 +32,8 @@ public class Edit extends JFrame {
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent)
             {
-                //close website window
+                //close website window and open app window
                 editFrame.dispose();
-                //open app window
                 Website.webFrame(pathButtonWebsites, pathWebsiteInfo, list, pathChrome);
             }
         });
@@ -147,12 +141,6 @@ public class Edit extends JFrame {
                 list.add(Spassword);
                 //verwijder originele lijn uit websiteInfo.csv en buttonWebsites.txt
                 deleteLine(pathWebsiteInfo, pathButtonWebsites, Ssite, Suser, Spassword);
-
-                // dit niet doen voor lege lijnen
-                //add veranderde lijn opnieuw
-                //WriteCsvFiles.writeCsv(pathWebsiteInfo, list);
-                // nieuwe button adden op originele frame
-                //ReadTxtFile.txtFileHandeling(pathButtonWebsites, false, Ssite);
 
                 //close website window
                 JComponent comp = (JComponent) h.getSource();

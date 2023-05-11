@@ -4,10 +4,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-public class WriteCsvFiles {
+public class WriteCsvFiles
+{
     public static void writeCsv(String fileName, List<String> list, boolean yAppend)
     {
-        try (FileWriter fw = new FileWriter(fileName, yAppend)) {
+        try (FileWriter fw = new FileWriter(fileName, yAppend))
+        {
             if(yAppend)
                 fw.write("\n");
 
@@ -19,7 +21,9 @@ public class WriteCsvFiles {
                 fw.write(list.get(i) + ";");
             }
 
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
     }

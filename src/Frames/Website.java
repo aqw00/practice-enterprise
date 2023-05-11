@@ -1,7 +1,6 @@
 package Frames;
 
 import Reading.ReadTxtFile;
-import Reading.WriteCsvFiles;
 import WebsiteImporter.WebsitePageImporter;
 
 import javax.swing.*;
@@ -12,8 +11,9 @@ import java.util.List;
 import static Frames.Add.addFrame;
 import static Frames.Edit.editFrame;
 
-public class Website extends JFrame {
-    public static void webFrame (String pathButtonWebsites, String pathWebsiteInfo ,List<String> list, String pathChrome)
+public class Website extends JFrame
+{
+    public static void webFrame(String pathButtonWebsites, String pathWebsiteInfo ,List<String> list, String pathChrome)
     {
         // Create a JFrame and set its size
         JFrame frame = new JFrame("My UI");
@@ -64,9 +64,6 @@ public class Website extends JFrame {
                 {
                     WebsitePageImporter.importWebsitePage(pathChrome, item);
                 }
-
-                // System.out.println("Button " + item + " clicked.");
-
             });
             panel.add(button); // Add the button to the panel
         }
@@ -75,5 +72,4 @@ public class Website extends JFrame {
         frame.add(panel);
         frame.setVisible(true);
     }
-
 }

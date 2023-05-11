@@ -29,12 +29,6 @@ public class ReadCsvFiles
             {
                loginCredentials.add(str.split(splitBy));
             }
-
-//            for (int i = 0; i < loginCredentials.size(); i++)
-//            {
-//                System.out.println(loginCredentials.get(i)[0]);
-//                System.out.println(loginCredentials.get(i)[1]);
-//            }
             br.close();
 
             return loginCredentials;
@@ -54,4 +48,3 @@ public class ReadCsvFiles
         return null;
     }
 }
-

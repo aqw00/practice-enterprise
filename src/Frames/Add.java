@@ -8,14 +8,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.List;
 
-public class Add extends JFrame {
+public class Add extends JFrame
+{
     public static void addFrame(ActionEvent e, List<String> csvEditList, JFrame frame, String pathWebsiteInfo, String pathButtonWebsites, String pathChrome)
     {
         JComponent comp1 = (JComponent) e.getSource();
         Window win1 = SwingUtilities.getWindowAncestor(comp1);
         win1.dispose();
 
-        // System.out.println("Button " + item + " clicked.");
         // Create JFrame and set size for AddWebsite
         JFrame form = new JFrame("Add Website");
         form.setSize(300, 200);
@@ -26,13 +26,11 @@ public class Add extends JFrame {
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent)
             {
-                //close website window
+                //close website window and open app window
                 form.dispose();
-                //open app window
                 Website.webFrame(pathButtonWebsites, pathWebsiteInfo, csvEditList, pathChrome);
             }
         });
-
 
         // Create Jpanel with GridLayout
         JPanel formPanel = new JPanel(new GridLayout(7, 2));
@@ -119,12 +117,17 @@ public class Add extends JFrame {
             {
                 lblWarning.setVisible(false);
                 lblWarning.setVisible(false);
+
                 // data opslaan in CSV
                 csvEditList.add(site);
                 csvEditList.add(url);
                 csvEditList.add(user);
                 csvEditList.add(password);
+                csvEditList.add("email_location");
+                csvEditList.add("password_location");
+                csvEditList.add("login_button");
                 WriteCsvFiles.writeCsv(pathWebsiteInfo, csvEditList, true);
+
                 // nieuwe button adden op originele frame
                 ReadTxtFile.txtFileHandeling(pathButtonWebsites, false, txtSite.getText());
                 //close website window
