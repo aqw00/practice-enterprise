@@ -16,7 +16,8 @@ public class SFTPConnect
             ChannelSftp channelSftp = (ChannelSftp) session.openChannel("sftp");
             channelSftp.connect();
 
-            channelSftp.get(remoteFilePath, localFilePath);
+            channelSftp.get(remoteFilePath, localFilePath); // get the file from sftp
+            // TODO: get all the files for decryption and sen also files back after filling in passwords
 
             channelSftp.disconnect();
             session.disconnect();

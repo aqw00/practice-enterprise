@@ -72,23 +72,20 @@ public class DecryptAESKey {
     }
 
     // ENCRYPT
-    /* hier moet ge aes key halen van DecryptCsvFile*/
-    public static void encryptAesKey(String publicPath, String[] aes_key) throws Exception
+    public static void encryptAesKey(String publicPath, String[] aes_key, Path aes_keyEnc) throws Exception
     {
+        // Convert Hex to byte array
+        byte[] keyBytes = hexStringToByteArray(aes_key[0]);
+
+        // Create key
+        SecretKeySpec secretKey = new SecretKeySpec(keyBytes, "AES");
+
         Security.addProvider(new BouncyCastleProvider());
 
-        SecretKey secretKey = generateAESKey();
-        //SecretKey pass = (aes_key[0]);
         byte[] encryptedAesKey = encryptAESKey(secretKey, publicPath);
 
         System.out.println(Base64.getEncoder().encodeToString(encryptedAesKey));
-    }
-
-    /* dit moet weg omdat andere encryption al AES key maakt*/
-    private static SecretKey generateAESKey() throws Exception {
-        KeyGenerator generator = KeyGenerator.getInstance("AES");
-        generator.init(256); // The AES key size in number of bits
-        return generator.generateKey();
+        Files.write(aes_keyEnc, encryptedAesKey); // write to file
     }
 
     private static byte[] encryptAESKey(SecretKey aesKey, String publicKeyPath) throws Exception {
