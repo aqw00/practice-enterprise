@@ -3,6 +3,7 @@ package Encryption;
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -68,6 +69,31 @@ public class DecryptCsvFile {
         byte[] encryptedData = cipher.doFinal(decryptedData); // Encrypt data
 
         Files.write(encFile, encryptedData); // Write encrypted data to file
+
+
+    }
+
+    public static String encryptPass(String strToEncrypt) throws Exception
+    {
+        byte[] keyBytes = hexStringToByteArray("e1a5bbffb264be79d47e1b6828e93f3f896f23acf4af4db68745379024db0a90");
+        byte[] ivBytes = hexStringToByteArray("22abea5d5d3ae5e796562f30e53c7199");
+
+        // Create key and IV
+        SecretKeySpec secretKeySpec = new SecretKeySpec(keyBytes, "AES");
+        IvParameterSpec ivParameterSpec = new IvParameterSpec(ivBytes);
+
+        // Encrypt
+        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+        cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec, ivParameterSpec);
+
+        byte[] decryptedData = strToEncrypt.getBytes(StandardCharsets.UTF_8); // Convert string to byte array
+
+        byte[] encryptedData = cipher.doFinal(decryptedData); // Encrypt data
+
+        String encryptedString = Base64.getEncoder().encodeToString(encryptedData); // Convert encrypted data to string
+
+        // System.out.println("Encrypted string: " + encryptedString);
+        return encryptedString;
     }
 
     // TODO: safe keys in file

@@ -1,5 +1,6 @@
 package Frames;
 
+import Encryption.DecryptCsvFile;
 import Reading.ReadTxtFile;
 import Reading.WriteCsvFiles;
 
@@ -64,26 +65,27 @@ public class Login extends JFrame
         btnLogin.addActionListener((ActionEvent h) -> {
             String user = txtUser.getText();
             String password = txtPassword.getText();
+            try {
+                if (user.equals("") || password.equals("")) {
+                    lblEmpty.setVisible(true);
+                    lblWrong.setVisible(false);
+                } else if (DecryptCsvFile.encryptPass(password).equals("s2uxhWyKCXUXUs5UFA4bBQ==") && user.equals("sftpuser")) {
+                    //close this window
+                    JComponent comp = (JComponent) h.getSource();
+                    Window win = SwingUtilities.getWindowAncestor(comp);
+                    win.dispose();
 
-            if (user.equals("") || password.equals(""))
-            {
-                lblEmpty.setVisible(true);
-                lblWrong.setVisible(false);
-            }
-            else if (1==2 /*als user of password fout is*/)
-            {
-                lblEmpty.setVisible(false);
-                lblWrong.setVisible(true);
-            }
-            else if (1==1 /*als user en password juist zijn*/)
-            {
-                //close this window
-                JComponent comp = (JComponent) h.getSource();
-                Window win = SwingUtilities.getWindowAncestor(comp);
-                win.dispose();
+                    //open website window
+                    Website.webFrame(pathButtonWebsites, pathWebsiteInfo, csvEditList, pathChrome);
 
-                //open website window
-                Website.webFrame(pathButtonWebsites, pathWebsiteInfo, csvEditList, pathChrome);
+                } else {
+                    lblEmpty.setVisible(false);
+                    lblWrong.setVisible(true);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new RuntimeException(e);
             }
         });
 

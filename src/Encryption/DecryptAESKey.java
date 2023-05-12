@@ -72,17 +72,19 @@ public class DecryptAESKey {
     }
 
     // ENCRYPT
-
-    public static void encryptAesKey(String publicPath) throws Exception
+    /* hier moet ge aes key halen van DecryptCsvFile*/
+    public static void encryptAesKey(String publicPath, String[] aes_key) throws Exception
     {
         Security.addProvider(new BouncyCastleProvider());
 
         SecretKey secretKey = generateAESKey();
+        //SecretKey pass = (aes_key[0]);
         byte[] encryptedAesKey = encryptAESKey(secretKey, publicPath);
 
         System.out.println(Base64.getEncoder().encodeToString(encryptedAesKey));
     }
 
+    /* dit moet weg omdat andere encryption al AES key maakt*/
     private static SecretKey generateAESKey() throws Exception {
         KeyGenerator generator = KeyGenerator.getInstance("AES");
         generator.init(256); // The AES key size in number of bits
@@ -99,6 +101,17 @@ public class DecryptAESKey {
         cipher.init(Cipher.ENCRYPT_MODE, pk);
 
         return cipher.doFinal(aesKey.getEncoded());
+    }
+
+    private static byte[] hexStringToByteArray(String s)
+    {
+        int len = s.length();
+        byte[] data = new byte[len / 2];
+        for (int i = 0; i < len; i += 2) {
+            data[i / 2] = (byte) ((Character.digit(s.charAt(i), 16) << 4)
+                    + Character.digit(s.charAt(i+1), 16));
+        }
+        return data;
     }
 
 }
