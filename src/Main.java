@@ -1,3 +1,4 @@
+import Frames.Login;
 import Frames.Website;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,7 @@ public class Main {
         String pathButtonWebsites = "C:\\Users\\robin\\IdeaProjects\\practice-enterprise\\src\\buttonWebsites.txt";
         String pathWebsiteInfo = "C:\\Users\\robin\\IdeaProjects\\practice-enterprise\\src\\websiteInfo.csv";
 
-        Website.webFrame(pathButtonWebsites, pathWebsiteInfo, list, pathChrome);
+        Login.loginFrame(pathButtonWebsites, pathWebsiteInfo, list, pathChrome);
+        //Website.webFrame(pathButtonWebsites, pathWebsiteInfo, list, pathChrome);
     }
 }
