@@ -13,7 +13,7 @@ import static Frames.Edit.editFrame;
 
 public class Website extends JFrame
 {
-    public static void webFrame(String pathButtonWebsites, String pathWebsiteInfo ,List<String> list, String pathChrome)
+    public static void webFrame(String pathButtonWebsites, String pathWebsiteInfo ,List<String> list, String pathChrome, String csvFile)
     {
         // Create a JFrame and set its size
         JFrame frame = new JFrame("My UI");
@@ -51,18 +51,20 @@ public class Website extends JFrame
 
                     // end program
                     System.exit(0);
+
+                    // TODO: delete files that are transferred with sftp (sharedFolder)
                 }
                 else if(item.equals("ADD"))
                 {
-                    addFrame(e, list, frame, pathWebsiteInfo, pathButtonWebsites, pathChrome);
+                    addFrame(e, list, frame, pathWebsiteInfo, pathButtonWebsites, pathChrome, csvFile);
                 }
                 else if(item.equals("EDIT"))
                 {
-                    editFrame(e, items, list, frame, pathWebsiteInfo, pathButtonWebsites, pathChrome);
+                    editFrame(e, items, list, frame, pathWebsiteInfo, pathButtonWebsites, pathChrome, csvFile);
                 }
                 else
                 {
-                    WebsitePageImporter.importWebsitePage(pathChrome, item);
+                    WebsitePageImporter.importWebsitePage(pathChrome, item, csvFile);
                 }
             });
             panel.add(button); // Add the button to the panel

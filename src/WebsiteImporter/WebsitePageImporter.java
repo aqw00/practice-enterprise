@@ -8,24 +8,20 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class WebsitePageImporter
 {
-    public static void importWebsitePage(String pathChromedriver, String siteName)
+    public static void importWebsitePage(String pathChromedriver, String siteName, String csvFile)
     {
         String url = "", email = "", password = "", usernamePosition = null, passwordPosition = null, buttonPosition = null;
 
-         String fileName = "C:\\Users\\robin\\IdeaProjects\\practice-enterprise\\src\\websiteInfo.csv";
-        // String fileName = "/home/tone/IdeaProjects/practice-enterprise/src/websiteInfo.csv";
-        //String fileName = "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\websiteInfo.csv";
-
-        for (int i = 0; i < (ReadCsvFiles.readFile(fileName).size()); i++)
+        for (int i = 0; i < (ReadCsvFiles.readFile(csvFile).size()); i++)
         {
-            if(ReadCsvFiles.readFile(fileName).get(i)[0].equals(siteName))
+            if(ReadCsvFiles.readFile(csvFile).get(i)[0].equals(siteName))
             {
-                url = ReadCsvFiles.readFile(fileName).get(i)[1];
-                email = ReadCsvFiles.readFile(fileName).get(i)[2];
-                password = ReadCsvFiles.readFile(fileName).get(i)[3];
-                usernamePosition = ReadCsvFiles.readFile(fileName).get(i)[4];
-                passwordPosition = ReadCsvFiles.readFile(fileName).get(i)[5];
-                buttonPosition = ReadCsvFiles.readFile(fileName).get(i)[6];
+                url = ReadCsvFiles.readFile(csvFile).get(i)[1];
+                email = ReadCsvFiles.readFile(csvFile).get(i)[2];
+                password = ReadCsvFiles.readFile(csvFile).get(i)[3];
+                usernamePosition = ReadCsvFiles.readFile(csvFile).get(i)[4];
+                passwordPosition = ReadCsvFiles.readFile(csvFile).get(i)[5];
+                buttonPosition = ReadCsvFiles.readFile(csvFile).get(i)[6];
             }
         }
 

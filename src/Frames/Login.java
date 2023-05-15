@@ -1,12 +1,16 @@
 package Frames;
 
+import Encryption.DecryptAESKey;
 import Encryption.DecryptCsvFile;
+import Encryption.VerifySignature;
 import Reading.ReadTxtFile;
 import Reading.WriteCsvFiles;
+import Connection.SFTPConnect;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.sql.Connection;
 import java.util.List;
 
 public class Login extends JFrame
@@ -65,18 +69,48 @@ public class Login extends JFrame
         btnLogin.addActionListener((ActionEvent h) -> {
             String user = txtUser.getText();
             String password = txtPassword.getText();
+
             try {
+                String encPass = DecryptCsvFile.encryptPass(password);
+
                 if (user.equals("") || password.equals("")) {
                     lblEmpty.setVisible(true);
                     lblWrong.setVisible(false);
-                } else if (DecryptCsvFile.encryptPass(password).equals("s2uxhWyKCXUXUs5UFA4bBQ==") && user.equals("sftpuser")) {
+                } else if (encPass.equals("s2uxhWyKCXUXUs5UFA4bBQ==") && user.equals("sftpuser")) {
                     //close this window
                     JComponent comp = (JComponent) h.getSource();
                     Window win = SwingUtilities.getWindowAncestor(comp);
                     win.dispose();
 
+                    /* SFTP */
+                    String host = "192.168.1.69";
+                    int port = 22;
+                    String remoteFilePath = "/shared/websiteInfo.csv";
+                    //String localFilePath = "/home/tone/IdeaProjects/practice-enterprise/src/test.csv";
+                    String localFilePath = "C:\\Users\\robin\\IdeaProjects\\practice-enterprise\\src\\test.csv";
+                    //String localFilePath = "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\test.csv";
+                    String url = "";
+
+                    String[] remoteFilePaths = {"/shared/data.csv.enc", "/shared/aes_key.enc.sig", "/shared/aes_key.enc", "/shared/aes_iv.txt"};
+                    String[] localFilePaths = {"C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\data.csv.enc", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc.sig", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_iv.txt"};
+
+                    // TODO: if connection fails do not open the website frame instead open de login frame with error msg if possible
+                    SFTPConnect.connectSFTP(host, port, user, password, remoteFilePaths, localFilePaths);
+
+                    /*Encryption*/
+                    VerifySignature.verifySig("C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\Encryption-Test\\public.pem", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc.sig", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc");
+
+                    String decAes_key = DecryptAESKey.decryptAesKey("C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\Encryption-Test\\private_pkcs8.pem", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc");
+
+                    DecryptCsvFile.decryptCsv("C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_iv.txt", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\data.csv.enc", decAes_key, "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\test.csv");
+
+                    // Location Csv file
+                    //String csvFile = "C:\\Users\\robin\\IdeaProjects\\practice-enterprise\\src\\websiteInfo.csv";
+                    //String csvFile = "/home/tone/IdeaProjects/practice-enterprise/src/websiteInfo.csv";
+                    String csvFile = "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\websiteInfo.csv";
+
                     //open website window
-                    Website.webFrame(pathButtonWebsites, pathWebsiteInfo, csvEditList, pathChrome);
+                    Website.webFrame(pathButtonWebsites, pathWebsiteInfo, csvEditList, pathChrome, csvFile);
 
                 } else {
                     lblEmpty.setVisible(false);
@@ -87,6 +121,7 @@ public class Login extends JFrame
             {
                 throw new RuntimeException(e);
             }
+
         });
 
         // add panel to frame and make visible

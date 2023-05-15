@@ -55,12 +55,15 @@ public class DecryptAESKey {
         }
     }
 
-    public static String decryptAesKey(Path mePath, Path keyPath, Path filePath, Path ivPath) throws Exception {
+    public static String decryptAesKey(String mePathStr, String keyPathStr) throws Exception {
+        Path mePath = Path.of(mePathStr);
+        Path keyPath = Path.of(keyPathStr);
+
         Security.addProvider(new BouncyCastleProvider());
 
         byte[] encryptedAesKey = Files.readAllBytes(keyPath);
 
-        PrivateKey privateKey = loadPrivateKey("/home/tone/IdeaProjects/practice-enterprise/Encryption-Test/private_pkcs8.pem");
+        PrivateKey privateKey = loadPrivateKey(mePathStr);
 
         Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding", "BC");
         cipher.init(Cipher.DECRYPT_MODE, privateKey);

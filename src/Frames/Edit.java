@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Edit extends JFrame
 {
-    public static void editFrame(ActionEvent e, List<String> items, List<String> list, JFrame frame, String pathWebsiteInfo, String pathButtonWebsites, String pathChrome)
+    public static void editFrame(ActionEvent e, List<String> items, List<String> list, JFrame frame, String pathWebsiteInfo, String pathButtonWebsites, String pathChrome, String csvFile)
     {
         items.remove("ADD");
         items.remove("EDIT");
@@ -34,7 +34,7 @@ public class Edit extends JFrame
             {
                 //close website window and open app window
                 editFrame.dispose();
-                Website.webFrame(pathButtonWebsites, pathWebsiteInfo, list, pathChrome);
+                Website.webFrame(pathButtonWebsites, pathWebsiteInfo, list, pathChrome, csvFile);
             }
         });
 
@@ -110,7 +110,7 @@ public class Edit extends JFrame
             win.dispose();
 
             //open app window
-            Website.webFrame(pathButtonWebsites, pathWebsiteInfo, list, pathChrome);
+            Website.webFrame(pathButtonWebsites, pathWebsiteInfo, list, pathChrome, csvFile);
         });
 
         // add save button
@@ -148,7 +148,7 @@ public class Edit extends JFrame
                 win.dispose();
 
                 //open app window
-                Website.webFrame(pathButtonWebsites, pathWebsiteInfo, list, pathChrome);
+                Website.webFrame(pathButtonWebsites, pathWebsiteInfo, list, pathChrome, csvFile);
             }
         });
 

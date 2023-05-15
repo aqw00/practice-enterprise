@@ -14,10 +14,14 @@ import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 
 public class VerifySignature {
-    public static void verifySig (Path publicPath, Path sigPath, Path keyPath)
+    public static void verifySig (String publicPathStr, String sigPathStr, String keyPathStr)
     {
         try
         {
+            Path publicPath = Path.of(publicPathStr);
+            Path sigPath = Path.of(sigPathStr);
+            Path keyPath = Path.of(keyPathStr);
+
             // Load public key
             byte[] keyBytes = Files.readAllBytes(publicPath);
             String publicKeyContent = new String(keyBytes);

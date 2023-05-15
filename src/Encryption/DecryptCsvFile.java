@@ -1,5 +1,7 @@
 package Encryption;
 
+import io.netty.util.internal.StringUtil;
+
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
@@ -15,12 +17,17 @@ import javax.crypto.spec.SecretKeySpec;
 import java.security.SecureRandom;
 import java.util.Arrays;
 public class DecryptCsvFile {
-    public static void decryptCsv(Path ivPath, Path encFile) throws Exception
+    public static void decryptCsv(String ivPathStr, String encFileStr, String aes_keyStr, String decryptedCsvStr) throws Exception
     {
-        // Convert Hex to byte array
-        byte[] keyBytes = hexStringToByteArray("609edc6f66c3b03ac84632726f98790c842c7b445fc86c2bcbe54be191484b89");
-        byte[] ivBytes = hexStringToByteArray("96fd1455632290437c9d37ee68d6d5fb");
+        Path ivPath = Path.of(ivPathStr);
+        Path encFile = Path.of(encFileStr);
+        Path decryptedCsv = Path.of(decryptedCsvStr);
 
+        String keyStr = aes_keyStr.substring(0, Math.min(aes_keyStr.length(), 64));
+        // Convert Hex to byte array
+        byte[] keyBytes = hexStringToByteArray(keyStr);
+        //byte[] ivBytes = Files.readAllBytes(ivPath);
+        byte[] ivBytes = hexStringToByteArray("96fd1455632290437c9d37ee68d6d5fb");
 
         // Create key and IV
         SecretKeySpec secretKeySpec = new SecretKeySpec(keyBytes, "AES");
@@ -33,7 +40,7 @@ public class DecryptCsvFile {
         byte[] encryptedData = Files.readAllBytes(encFile); // Read encrypted data
         byte[] decryptedData = cipher.doFinal(encryptedData); // Decrypt data
 
-        Files.write(Paths.get("data.csv"), decryptedData); // Write decrypted data to file
+        Files.write(decryptedCsv, decryptedData); // Write decrypted data to file
     }
 
     private static byte[] hexStringToByteArray(String s)

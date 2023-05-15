@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Add extends JFrame
 {
-    public static void addFrame(ActionEvent e, List<String> csvEditList, JFrame frame, String pathWebsiteInfo, String pathButtonWebsites, String pathChrome)
+    public static void addFrame(ActionEvent e, List<String> csvEditList, JFrame frame, String pathWebsiteInfo, String pathButtonWebsites, String pathChrome, String csvFile)
     {
         JComponent comp1 = (JComponent) e.getSource();
         Window win1 = SwingUtilities.getWindowAncestor(comp1);
@@ -28,7 +28,7 @@ public class Add extends JFrame
             {
                 //close website window and open app window
                 form.dispose();
-                Website.webFrame(pathButtonWebsites, pathWebsiteInfo, csvEditList, pathChrome);
+                Website.webFrame(pathButtonWebsites, pathWebsiteInfo, csvEditList, pathChrome, csvFile);
             }
         });
 
@@ -95,7 +95,7 @@ public class Add extends JFrame
             win.dispose();
 
             //open app window
-            Website.webFrame(pathButtonWebsites, pathWebsiteInfo, csvEditList, pathChrome);
+            Website.webFrame(pathButtonWebsites, pathWebsiteInfo, csvEditList, pathChrome, csvFile);
         });
 
         // add confirm button
@@ -136,7 +136,7 @@ public class Add extends JFrame
                 win.dispose();
 
                 //open app window
-                Website.webFrame(pathButtonWebsites, pathWebsiteInfo, csvEditList, pathChrome);
+                Website.webFrame(pathButtonWebsites, pathWebsiteInfo, csvEditList, pathChrome, csvFile);
             }
         });
 
