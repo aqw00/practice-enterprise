@@ -1,5 +1,6 @@
 package Encryption;
 
+import Reading.ReadTxtFile;
 import io.netty.util.internal.StringUtil;
 
 import javax.crypto.Cipher;
@@ -17,17 +18,17 @@ import javax.crypto.spec.SecretKeySpec;
 import java.security.SecureRandom;
 import java.util.Arrays;
 public class DecryptCsvFile {
-    public static void decryptCsv(String ivPathStr, String encFileStr, String aes_keyStr, String decryptedCsvStr) throws Exception
+    public static void decryptCsv(String ivPathStr, String encFileStr, byte[] keyBytes, String decryptedCsvStr) throws Exception
     {
         Path ivPath = Path.of(ivPathStr);
         Path encFile = Path.of(encFileStr);
         Path decryptedCsv = Path.of(decryptedCsvStr);
 
-        String keyStr = aes_keyStr.substring(0, Math.min(aes_keyStr.length(), 64));
+        // 1 String keyStr = aes_keyStr.substring(0, Math.min(aes_keyStr.length(), 64));
         // Convert Hex to byte array
-        byte[] keyBytes = hexStringToByteArray(keyStr);
+        // 2 byte[] keyBytes = hexStringToByteArray(aes_keyStr);
         //byte[] ivBytes = Files.readAllBytes(ivPath);
-        byte[] ivBytes = hexStringToByteArray("96fd1455632290437c9d37ee68d6d5fb");
+        byte[] ivBytes = hexStringToByteArray("645df74b144b679ae09a92726c86696c");
 
         // Create key and IV
         SecretKeySpec secretKeySpec = new SecretKeySpec(keyBytes, "AES");
@@ -56,7 +57,7 @@ public class DecryptCsvFile {
 
     // ENCRYPT
 
-    public static void encryptCsv(Path decFile, Path encFile) throws Exception
+    public static String[] encryptCsv(Path decFile, Path encFile) throws Exception
     {
         String[] keyIv = generateKeyAndIv();
 
@@ -75,11 +76,24 @@ public class DecryptCsvFile {
         byte[] decryptedData = Files.readAllBytes(decFile); // Read decrypted data
         byte[] encryptedData = cipher.doFinal(decryptedData); // Encrypt data
 
+        System.out.println("aeskey: " + keyIv[0]);
+        System.out.println("ivkey: " + keyIv[1]);
+
         Files.write(encFile, encryptedData); // Write encrypted data to file
 
 
+        Path encIvKey = Path.of("C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\aes_iv.txt");
+
+        //Files.write(encIvKey, ivBytes);
+
+        ReadTxtFile.txtFileHandeling("C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\aes_iv2.txt", false, keyIv[1]);
+        ReadTxtFile.txtFileHandeling("C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\aes_iv2.txt", false, keyIv[0]);
+
+        return keyIv;
+
     }
 
+    // this is for encrypting password for sftp
     public static String encryptPass(String strToEncrypt) throws Exception
     {
         byte[] keyBytes = hexStringToByteArray("e1a5bbffb264be79d47e1b6828e93f3f896f23acf4af4db68745379024db0a90");

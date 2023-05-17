@@ -100,7 +100,7 @@ public class Login extends JFrame
                     /*Encryption*/
                     VerifySignature.verifySig("C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\Encryption-Test\\public.pem", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc.sig", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc");
 
-                    String decAes_key = DecryptAESKey.decryptAesKey("C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\Encryption-Test\\private_pkcs8.pem", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc");
+                    byte[] decAes_key = DecryptAESKey.decryptAesKey("C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\Encryption-Test\\private.pem", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc");
 
                     DecryptCsvFile.decryptCsv("C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_iv.txt", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\data.csv.enc", decAes_key, "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\test.csv");
 

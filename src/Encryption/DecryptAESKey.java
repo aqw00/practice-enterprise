@@ -38,11 +38,49 @@ import javax.crypto.SecretKey;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import java.security.Security;
 import java.util.Base64;
+import org.bouncycastle.asn1.ASN1Sequence;
+import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
+import org.bouncycastle.openssl.PEMKeyPair;
+import org.bouncycastle.openssl.PEMParser;
+import org.bouncycastle.openssl.jcajce.JcaPEMKeyConverter;
+import java.security.KeyPair;
 
 
 public class DecryptAESKey {
 
     private static PrivateKey loadPrivateKey(String path) throws Exception {
+        try (FileReader fileReader = new FileReader(path);
+             PEMParser pemParser = new PEMParser(fileReader)) {
+
+            Object object = pemParser.readObject();
+            JcaPEMKeyConverter converter = new JcaPEMKeyConverter().setProvider("BC");
+            KeyPair kp;
+
+            if (object instanceof PEMKeyPair) {
+                kp = converter.getKeyPair((PEMKeyPair) object);
+            } else {
+                throw new RuntimeException("Unsupported key format! Only PKCS#1 supported.");
+            }
+
+            return kp.getPrivate();
+        }
+    }
+
+    public static byte[] decryptAesKey(String mePathStr, String keyPathStr) throws Exception {
+        Path keyPath = Path.of(keyPathStr);
+
+        Security.addProvider(new BouncyCastleProvider());
+
+        byte[] encryptedAesKey = Files.readAllBytes(keyPath);
+
+        PrivateKey privateKey = loadPrivateKey(mePathStr);
+
+        Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding", "BC");
+        cipher.init(Cipher.DECRYPT_MODE, privateKey);
+
+        return cipher.doFinal(encryptedAesKey);
+    }
+        /*
         try (FileReader fileReader = new FileReader(path);
              PemReader pemReader = new PemReader(fileReader)) {
 
@@ -72,11 +110,10 @@ public class DecryptAESKey {
         String strDecryptedData = new String(decryptedData);
         System.out.println(strDecryptedData);
         return strDecryptedData;
-    }
+    }*/
 
     // ENCRYPT
-    public static void encryptAesKey(String publicPath, String[] aes_key, Path aes_keyEnc) throws Exception
-    {
+    public static void encryptAesKey(String publicPath, String[] aes_key, Path aes_keyEnc) throws Exception {
         // Convert Hex to byte array
         byte[] keyBytes = hexStringToByteArray(aes_key[0]);
 
@@ -92,10 +129,7 @@ public class DecryptAESKey {
     }
 
     private static byte[] encryptAESKey(SecretKey aesKey, String publicKeyPath) throws Exception {
-        byte[] publicKeyBytes = Files.readAllBytes(Path.of(publicKeyPath));
-        X509EncodedKeySpec spec = new X509EncodedKeySpec(publicKeyBytes);
-        KeyFactory kf = KeyFactory.getInstance("RSA");
-        PublicKey pk = kf.generatePublic(spec);
+        PublicKey pk = getPublicKey(publicKeyPath);
 
         Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding", "BC");
         cipher.init(Cipher.ENCRYPT_MODE, pk);
@@ -103,15 +137,23 @@ public class DecryptAESKey {
         return cipher.doFinal(aesKey.getEncoded());
     }
 
-    private static byte[] hexStringToByteArray(String s)
-    {
+    private static byte[] hexStringToByteArray(String s) {
         int len = s.length();
         byte[] data = new byte[len / 2];
         for (int i = 0; i < len; i += 2) {
             data[i / 2] = (byte) ((Character.digit(s.charAt(i), 16) << 4)
-                    + Character.digit(s.charAt(i+1), 16));
+                    + Character.digit(s.charAt(i + 1), 16));
         }
         return data;
+    }
+
+    private static PublicKey getPublicKey(String filename) throws Exception {
+        File file = new File(filename);
+        try (FileReader keyReader = new FileReader(file); PemReader pemReader = new PemReader(keyReader)) {
+            X509EncodedKeySpec spec = new X509EncodedKeySpec(pemReader.readPemObject().getContent());
+            KeyFactory kf = KeyFactory.getInstance("RSA");
+            return kf.generatePublic(spec);
+        }
     }
 
 }
