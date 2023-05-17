@@ -35,19 +35,6 @@ public class Main {
         String pathButtonWebsites = basePath + "src\\buttonWebsites.txt";
         String pathWebsiteInfo = basePath + "src\\websiteInfo.csv";
 
-        /* ENCRYPTION
-        Path decPath = Path.of("C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\websiteInfo.csv");
-        Path encPath = Path.of("C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\data.csv.enc");
-        String[] test = DecryptCsvFile.encryptCsv(decPath, encPath);
-
-        Path encAesPath = Path.of("C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\aes_key.enc");
-        DecryptAESKey.encryptAesKey("C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\Encryption-Test\\public.pem", test, encAesPath);*/
-
-        /* test sig not working yet
-        Path encAesPath = Path.of("C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc");
-        String mePath = "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\Encryption-Test\\private.pem";
-        VerifySignature.createSig(mePath, encAesPath);*/
-
         Login.loginFrame(pathButtonWebsites, pathWebsiteInfo, list, pathChrome);
         //Website.webFrame(pathButtonWebsites, pathWebsiteInfo, list, pathChrome);
     }

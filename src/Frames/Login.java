@@ -85,14 +85,9 @@ public class Login extends JFrame
                     /* SFTP */
                     String host = "192.168.1.69";
                     int port = 22;
-                    String remoteFilePath = "/shared/websiteInfo.csv";
-                    //String localFilePath = "/home/tone/IdeaProjects/practice-enterprise/src/test.csv";
-                    String localFilePath = "C:\\Users\\robin\\IdeaProjects\\practice-enterprise\\src\\test.csv";
-                    //String localFilePath = "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\test.csv";
-                    String url = "";
 
-                    String[] remoteFilePaths = {"/shared/data.csv.enc", "/shared/aes_key.enc.sig", "/shared/aes_key.enc", "/shared/aes_iv.txt"};
-                    String[] localFilePaths = {"C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\data.csv.enc", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc.sig", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_iv.txt"};
+                    String[] remoteFilePaths = {"/shared/data.csv.enc", "/shared/aes_key.enc.sig", "/shared/aes_key.enc", "/shared/aes_iv.txt", "/shared/public.pem"};
+                    String[] localFilePaths = {"C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\data.csv.enc", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc.sig", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_iv.txt", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\public.pem"};
 
                     // TODO: if connection fails do not open the website frame instead open de login frame with error msg if possible
                     SFTPConnect.connectSFTP(host, port, user, password, remoteFilePaths, localFilePaths);
@@ -102,7 +97,7 @@ public class Login extends JFrame
 
                     byte[] decAes_key = DecryptAESKey.decryptAesKey("C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\Encryption-Test\\private.pem", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc");
 
-                    DecryptCsvFile.decryptCsv("C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_iv.txt", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\data.csv.enc", decAes_key, "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\test.csv");
+                    DecryptCsvFile.decryptCsv("C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_iv.txt", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\data.csv.enc", decAes_key, "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\websiteInfo.csv");
 
                     // Location Csv file
                     //String csvFile = "C:\\Users\\robin\\IdeaProjects\\practice-enterprise\\src\\websiteInfo.csv";
@@ -110,7 +105,7 @@ public class Login extends JFrame
                     String csvFile = "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\websiteInfo.csv";
 
                     //open website window
-                    Website.webFrame(pathButtonWebsites, pathWebsiteInfo, csvEditList, pathChrome, csvFile);
+                    Website.webFrame(pathButtonWebsites, pathWebsiteInfo, csvEditList, pathChrome, csvFile, password);
 
                 } else {
                     lblEmpty.setVisible(false);

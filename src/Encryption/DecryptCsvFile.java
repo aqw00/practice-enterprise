@@ -17,6 +17,8 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import java.security.SecureRandom;
 import java.util.Arrays;
+import java.util.List;
+
 public class DecryptCsvFile {
     public static void decryptCsv(String ivPathStr, String encFileStr, byte[] keyBytes, String decryptedCsvStr) throws Exception
     {
@@ -28,7 +30,10 @@ public class DecryptCsvFile {
         // Convert Hex to byte array
         // 2 byte[] keyBytes = hexStringToByteArray(aes_keyStr);
         //byte[] ivBytes = Files.readAllBytes(ivPath);
-        byte[] ivBytes = hexStringToByteArray("645df74b144b679ae09a92726c86696c");
+        List<String> ivRawList = ReadTxtFile.txtFileHandeling(ivPathStr, true, "");
+        String ivRawStr = ivRawList.get(0);
+        String ivStr = ivRawStr.substring(0, Math.min(ivRawStr.length(), 64));
+        byte[] ivBytes = hexStringToByteArray(ivStr);
 
         // Create key and IV
         SecretKeySpec secretKeySpec = new SecretKeySpec(keyBytes, "AES");
@@ -42,6 +47,34 @@ public class DecryptCsvFile {
         byte[] decryptedData = cipher.doFinal(encryptedData); // Decrypt data
 
         Files.write(decryptedCsv, decryptedData); // Write decrypted data to file
+    }
+
+    public static String decryptString(String data)
+    {
+        try {
+            byte[] keyBytes = hexStringToByteArray("e1a5bbffb264be79d47e1b6828e93f3f896f23acf4af4db68745379024db0a90");
+            byte[] ivBytes = hexStringToByteArray("22abea5d5d3ae5e796562f30e53c7199");
+
+            // Create key and IV
+            SecretKeySpec secretKeySpec = new SecretKeySpec(keyBytes, "AES");
+            IvParameterSpec ivParameterSpec = new IvParameterSpec(ivBytes);
+
+            // Decrypt
+            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+            cipher.init(Cipher.DECRYPT_MODE, secretKeySpec, ivParameterSpec);
+
+            byte[] encryptedData = data.getBytes(StandardCharsets.UTF_8); // Convert string to byte array
+            byte[] decryptedData = cipher.doFinal(encryptedData);
+
+            String decryptedString = Base64.getEncoder().encodeToString(decryptedData); // Convert encrypted data to string
+
+            return decryptedString;
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        return "";
     }
 
     private static byte[] hexStringToByteArray(String s)
@@ -81,13 +114,7 @@ public class DecryptCsvFile {
 
         Files.write(encFile, encryptedData); // Write encrypted data to file
 
-
-        Path encIvKey = Path.of("C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\aes_iv.txt");
-
-        //Files.write(encIvKey, ivBytes);
-
-        ReadTxtFile.txtFileHandeling("C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\aes_iv2.txt", false, keyIv[1]);
-        ReadTxtFile.txtFileHandeling("C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\aes_iv2.txt", false, keyIv[0]);
+        ReadTxtFile.newTxtFile(keyIv[1], "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_iv.txt"); //write iv to file
 
         return keyIv;
 
