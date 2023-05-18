@@ -21,6 +21,9 @@ public class Website extends JFrame
 {
     public static void webFrame(String pathButtonWebsites, String pathWebsiteInfo ,List<String> list, String pathChrome, String csvFile, String sftpEncPass)
     {
+        // Home path
+        String basePath = "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\";
+
         // Create a JFrame and set its size
         JFrame frame = new JFrame("My UI");
         frame.setSize(300, 200);
@@ -52,15 +55,15 @@ public class Website extends JFrame
                 {
                     // encrypt csv file
                     try {
-                        Path decPath = Path.of("C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\websiteInfo.csv");
-                        Path encPath = Path.of("C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\data.csv.enc");
+                        Path decPath = Path.of(basePath + "src\\websiteInfo.csv");
+                        Path encPath = Path.of(basePath + "sharedFolder\\data.csv.enc");
                         String[] ivAndAes = DecryptCsvFile.encryptCsv(decPath, encPath);
 
-                        Path encAesPath = Path.of("C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc");
-                        DecryptAESKey.encryptAesKey("C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\public.pem", ivAndAes, encAesPath);
+                        Path encAesPath = Path.of(basePath + "sharedFolder\\aes_key.enc");
+                        DecryptAESKey.encryptAesKey(basePath + "sharedFolder\\public.pem", ivAndAes, encAesPath);
 
-                        String mePath = "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\Encryption-Test\\private.pem";
-                        String sigPath = "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc.sig";
+                        String mePath = basePath + "Encryption-Test\\private.pem";
+                        String sigPath = basePath + "sharedFolder\\aes_key.enc.sig";
                         VerifySignature.createSig(mePath, encAesPath, sigPath);
                     }
                     catch (Exception i)
@@ -75,8 +78,8 @@ public class Website extends JFrame
                     // decrypting password
                     //String sftpPass = DecryptCsvFile.decryptString(sftpEncPass);
 
-                    String[] remoteFilePaths = {"/shared/data.csv.enc", "/shared/aes_key.enc.sig", "/shared/aes_key.enc", "/shared/aes_iv.txt"};
-                    String[] localFilePaths = {"C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\data.csv.enc", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc.sig", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_iv.txt"};
+                    String[] remoteFilePaths = {"/shared/data.csv.enc", "/shared/aes_key.enc.sig", "/shared/aes_key.enc", "/shared/aes_iv.txt", "/shared/buttonWebsites.txt"};
+                    String[] localFilePaths = {"C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\data.csv.enc", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc.sig", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_iv.txt", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\buttonWebsites.txt"};
                     SFTPConnect.uploadFiles(host, port, "sftpuser",sftpEncPass, remoteFilePaths, localFilePaths);
 
                     // close window
@@ -85,7 +88,7 @@ public class Website extends JFrame
                     win.dispose();
 
                     // remove files in sharedFolder
-                    File folder = new File("C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder");
+                    File folder = new File(basePath + "sharedFolder");
                     File[] listOfFiles = folder.listFiles();
 
                     for (int i = 0; i < listOfFiles.length; i++) {
@@ -99,7 +102,8 @@ public class Website extends JFrame
                         }
                     }
 
-                    new File("C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\websiteInfo.csv").delete();
+                    new File(basePath + "src\\websiteInfo.csv").delete();
+                    new File(basePath + "src\\buttonWebsites.txt").delete();
 
                     // end program
                     System.exit(0);

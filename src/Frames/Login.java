@@ -17,6 +17,9 @@ public class Login extends JFrame
 {
     public static void loginFrame(String pathButtonWebsites, String pathWebsiteInfo ,List<String> csvEditList, String pathChrome)
     {
+        // Home path
+        String basePath = "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\";
+
         // Create JFrame and set size for AddWebsite
         JFrame loginframe = new JFrame("LocalPass Login");
         loginframe.setSize(350, 180);
@@ -86,23 +89,23 @@ public class Login extends JFrame
                     String host = "192.168.1.69";
                     int port = 22;
 
-                    String[] remoteFilePaths = {"/shared/data.csv.enc", "/shared/aes_key.enc.sig", "/shared/aes_key.enc", "/shared/aes_iv.txt", "/shared/public.pem"};
-                    String[] localFilePaths = {"C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\data.csv.enc", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc.sig", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_iv.txt", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\public.pem"};
+                    String[] remoteFilePaths = {"/shared/data.csv.enc", "/shared/aes_key.enc.sig", "/shared/aes_key.enc", "/shared/aes_iv.txt", "/shared/public.pem", "/shared/buttonWebsites.txt"};
+                    String[] localFilePaths = {"C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\data.csv.enc", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc.sig", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_iv.txt", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\public.pem", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\buttonWebsites.txt"};
 
                     // TODO: if connection fails do not open the website frame instead open de login frame with error msg if possible
                     SFTPConnect.connectSFTP(host, port, user, password, remoteFilePaths, localFilePaths);
 
                     /*Encryption*/
-                    VerifySignature.verifySig("C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\Encryption-Test\\public.pem", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc.sig", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc");
+                    VerifySignature.verifySig(basePath + "Encryption-Test\\public.pem", basePath + "sharedFolder\\aes_key.enc.sig", basePath +"sharedFolder\\aes_key.enc");
 
-                    byte[] decAes_key = DecryptAESKey.decryptAesKey("C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\Encryption-Test\\private.pem", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc");
+                    byte[] decAes_key = DecryptAESKey.decryptAesKey(basePath +"Encryption-Test\\private.pem", basePath + "sharedFolder\\aes_key.enc");
 
-                    DecryptCsvFile.decryptCsv("C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_iv.txt", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\data.csv.enc", decAes_key, "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\websiteInfo.csv");
+                    DecryptCsvFile.decryptCsv(basePath + "sharedFolder\\aes_iv.txt", basePath +"sharedFolder\\data.csv.enc", decAes_key, basePath + "src\\websiteInfo.csv");
 
                     // Location Csv file
                     //String csvFile = "C:\\Users\\robin\\IdeaProjects\\practice-enterprise\\src\\websiteInfo.csv";
                     //String csvFile = "/home/tone/IdeaProjects/practice-enterprise/src/websiteInfo.csv";
-                    String csvFile = "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\websiteInfo.csv";
+                    String csvFile = basePath + "src\\websiteInfo.csv";
 
                     //open website window
                     Website.webFrame(pathButtonWebsites, pathWebsiteInfo, csvEditList, pathChrome, csvFile, password);
