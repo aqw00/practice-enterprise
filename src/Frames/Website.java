@@ -60,7 +60,8 @@ public class Website extends JFrame
                         DecryptAESKey.encryptAesKey("C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\public.pem", ivAndAes, encAesPath);
 
                         String mePath = "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\Encryption-Test\\private.pem";
-                        VerifySignature.createSig(mePath, encAesPath);
+                        String sigPath = "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc.sig";
+                        VerifySignature.createSig(mePath, encAesPath, sigPath);
                     }
                     catch (Exception i)
                     {

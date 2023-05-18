@@ -69,7 +69,7 @@ public class VerifySignature {
 
     // Make sig
 
-    public static void createSig(String meKey, Path encAasKey) throws Exception {
+    public static void createSig(String meKey, Path encAasKey, String sigPath) throws Exception {
         Security.addProvider(new BouncyCastleProvider());
         PrivateKey privateKey = readPrivateKey(meKey);
 
@@ -85,7 +85,7 @@ public class VerifySignature {
         byte[] signedData = signature.sign();
 
         // Save the signed data
-        try (FileOutputStream fos = new FileOutputStream("aes_key.enc.sig")) {
+        try (FileOutputStream fos = new FileOutputStream(sigPath)) {
             fos.write(signedData);
         }
     }
