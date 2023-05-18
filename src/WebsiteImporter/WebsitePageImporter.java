@@ -47,7 +47,7 @@ public class WebsitePageImporter
         // Wait for the login process to complete
         try
         {
-            Thread.sleep(5000);
+            Thread.sleep(10000);
         }
         catch (InterruptedException e)
         {
