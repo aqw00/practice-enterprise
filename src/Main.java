@@ -1,16 +1,12 @@
-import Encryption.DecryptAESKey;
-import Encryption.DecryptCsvFile;
-import Encryption.VerifySignature;
 import Frames.Login;
-import Frames.Website;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
-    public static void main(String[] args) throws Exception {
+public class Main
+{
+    public static void main(String[] args) throws Exception
+    {
 
         List<String> list = new ArrayList<>();
 
@@ -36,6 +32,5 @@ public class Main {
         String pathWebsiteInfo = basePath + "src\\websiteInfo.csv";
 
         Login.loginFrame(pathButtonWebsites, pathWebsiteInfo, list, pathChrome);
-        //Website.webFrame(pathButtonWebsites, pathWebsiteInfo, list, pathChrome);
     }
 }

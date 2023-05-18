@@ -42,10 +42,13 @@ public class Website extends JFrame
             if(item.equals("ADD"))
             {
                 button.setBackground(Color.GREEN);
-            } else if (item.equals("CLOSE"))
+            }
+            else if (item.equals("CLOSE"))
             {
                 button.setBackground(Color.RED);
-            } else if (item.equals("EDIT")) {
+            }
+            else if (item.equals("EDIT"))
+            {
                 button.setBackground(Color.YELLOW);
             }
 
@@ -54,7 +57,8 @@ public class Website extends JFrame
                 if(item.equals("CLOSE"))
                 {
                     // encrypt csv file
-                    try {
+                    try
+                    {
                         Path decPath = Path.of(basePath + "src\\websiteInfo.csv");
                         Path encPath = Path.of(basePath + "sharedFolder\\data.csv.enc");
                         String[] ivAndAes = DecryptCsvFile.encryptCsv(decPath, encPath);
@@ -75,9 +79,6 @@ public class Website extends JFrame
                     String host = "192.168.1.69";
                     int port = 22;
 
-                    // decrypting password
-                    //String sftpPass = DecryptCsvFile.decryptString(sftpEncPass);
-
                     String[] remoteFilePaths = {"/shared/data.csv.enc", "/shared/aes_key.enc.sig", "/shared/aes_key.enc", "/shared/aes_iv.txt", "/shared/buttonWebsites.txt"};
                     String[] localFilePaths = {"C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\data.csv.enc", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc.sig", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_iv.txt", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\buttonWebsites.txt"};
                     SFTPConnect.uploadFiles(host, port, "sftpuser",sftpEncPass, remoteFilePaths, localFilePaths);
@@ -91,8 +92,10 @@ public class Website extends JFrame
                     File folder = new File(basePath + "sharedFolder");
                     File[] listOfFiles = folder.listFiles();
 
-                    for (int i = 0; i < listOfFiles.length; i++) {
-                        if (listOfFiles[i].isFile()) {
+                    for (int i = 0; i < listOfFiles.length; i++)
+                    {
+                        if (listOfFiles[i].isFile())
+                        {
                             System.out.println("File " + listOfFiles[i].getName());
                             listOfFiles[i].delete();
                         }
@@ -107,14 +110,12 @@ public class Website extends JFrame
 
                     // end program
                     System.exit(0);
-
-                    // TODO: delete files that are transferred with sftp (sharedFolder)
                 }
-                else if(item.equals("ADD"))
+                else if (item.equals("ADD"))
                 {
                     addFrame(e, list, frame, pathWebsiteInfo, pathButtonWebsites, pathChrome, csvFile, sftpEncPass);
                 }
-                else if(item.equals("EDIT"))
+                else if (item.equals("EDIT"))
                 {
                     editFrame(e, items, list, frame, pathWebsiteInfo, pathButtonWebsites, pathChrome, csvFile, sftpEncPass);
                 }

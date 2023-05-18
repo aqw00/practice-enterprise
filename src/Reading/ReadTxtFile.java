@@ -12,38 +12,49 @@ public class ReadTxtFile
     public static List<String> txtFileHandeling(String fileName, boolean readOrWrite, String newValue)
     {
         List<String> myArray = new ArrayList<>();
-        if(readOrWrite)
+        if (readOrWrite)
         {
-            try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            try (BufferedReader br = new BufferedReader(new FileReader(fileName)))
+            {
                 String line;
-                while ((line = br.readLine()) != null) {
+                while ((line = br.readLine()) != null)
+                {
                     String value = line.trim();
                     myArray.add(value);
                 }
                 return myArray;
-            } catch (IOException e) {
+            }
+            catch (IOException e)
+            {
                 e.printStackTrace();
             }
             return myArray;
         }
         else
         {
-            try (FileWriter fw = new FileWriter(fileName, true)) {
+            try (FileWriter fw = new FileWriter(fileName, true))
+            {
                 fw.write("\n" + newValue );
-            } catch (IOException e) {
+            }
+            catch (IOException e)
+            {
                 e.printStackTrace();
             }
         }
         return null;
     }
 
-    public static void newTxtFile(String text, String fileName) {
-        try {
+    public static void newTxtFile(String text, String fileName)
+    {
+        try
+        {
             FileWriter myWriter = new FileWriter(fileName);
             myWriter.write(text);
             myWriter.close();
             System.out.println("Successfully wrote to the file.");
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }

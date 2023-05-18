@@ -10,17 +10,16 @@ public class WriteCsvFiles
     {
         try (FileWriter fw = new FileWriter(fileName, yAppend))
         {
-            if(yAppend)
+            if (yAppend)
                 fw.write("\n");
 
-            for(int i = 0; i < list.size() ; i++)
+            for (int i = 0; i < list.size() ; i++)
             {
                 if(i %7 == 0 && i != 0)
                     fw.write("\n");
 
                 fw.write(list.get(i) + ";");
             }
-
         }
         catch (IOException e)
         {

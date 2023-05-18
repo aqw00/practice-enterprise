@@ -1,16 +1,13 @@
 package Frames;
 
+import Connection.SFTPConnect;
 import Encryption.DecryptAESKey;
 import Encryption.DecryptCsvFile;
 import Encryption.VerifySignature;
-import Reading.ReadTxtFile;
-import Reading.WriteCsvFiles;
-import Connection.SFTPConnect;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.sql.Connection;
 import java.util.List;
 
 public class Login extends JFrame
@@ -39,11 +36,13 @@ public class Login extends JFrame
         loginPanel.add(lblPassword);
         JPasswordField txtPassword = new JPasswordField();
         loginPanel.add(txtPassword);
+
         // make show button for password
         JLabel lblShow = new JLabel("Show Password");
         loginPanel.add(lblShow);
         JCheckBox chckPassword = new JCheckBox();
         loginPanel.add(chckPassword);
+
         // event for showbutton password
         chckPassword.addActionListener((ActionEvent f) -> {
             if (chckPassword.isSelected())
@@ -68,6 +67,7 @@ public class Login extends JFrame
         // add login button
         JButton btnLogin = new JButton("Login");
         loginPanel.add(btnLogin);
+
         // confirm button action
         btnLogin.addActionListener((ActionEvent h) -> {
             String user = txtUser.getText();
@@ -76,10 +76,13 @@ public class Login extends JFrame
             try {
                 String encPass = DecryptCsvFile.encryptPass(password);
 
-                if (user.equals("") || password.equals("")) {
+                if (user.equals("") || password.equals(""))
+                {
                     lblEmpty.setVisible(true);
                     lblWrong.setVisible(false);
-                } else if (encPass.equals("s2uxhWyKCXUXUs5UFA4bBQ==") && user.equals("sftpuser")) {
+                }
+                else if (encPass.equals("s2uxhWyKCXUXUs5UFA4bBQ==") && user.equals("sftpuser"))
+                {
                     //close this window
                     JComponent comp = (JComponent) h.getSource();
                     Window win = SwingUtilities.getWindowAncestor(comp);
@@ -92,14 +95,12 @@ public class Login extends JFrame
                     String[] remoteFilePaths = {"/shared/data.csv.enc", "/shared/aes_key.enc.sig", "/shared/aes_key.enc", "/shared/aes_iv.txt", "/shared/public.pem", "/shared/buttonWebsites.txt"};
                     String[] localFilePaths = {"C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\data.csv.enc", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc.sig", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_key.enc", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\aes_iv.txt", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\sharedFolder\\public.pem", "C:\\Users\\aqw00\\IdeaProjects\\practice-enterprise\\src\\buttonWebsites.txt"};
 
-                    // TODO: if connection fails do not open the website frame instead open de login frame with error msg if possible
+                    // TODO: if connection fails do not open the website frame instead open de login frame with error msg if possible ??
                     SFTPConnect.connectSFTP(host, port, user, password, remoteFilePaths, localFilePaths);
 
                     /*Encryption*/
                     VerifySignature.verifySig(basePath + "Encryption-Test\\public.pem", basePath + "sharedFolder\\aes_key.enc.sig", basePath +"sharedFolder\\aes_key.enc");
-
                     byte[] decAes_key = DecryptAESKey.decryptAesKey(basePath +"Encryption-Test\\private.pem", basePath + "sharedFolder\\aes_key.enc");
-
                     DecryptCsvFile.decryptCsv(basePath + "sharedFolder\\aes_iv.txt", basePath +"sharedFolder\\data.csv.enc", decAes_key, basePath + "src\\websiteInfo.csv");
 
                     // Location Csv file
@@ -109,8 +110,9 @@ public class Login extends JFrame
 
                     //open website window
                     Website.webFrame(pathButtonWebsites, pathWebsiteInfo, csvEditList, pathChrome, csvFile, password);
-
-                } else {
+                }
+                else
+                {
                     lblEmpty.setVisible(false);
                     lblWrong.setVisible(true);
                 }
@@ -119,7 +121,6 @@ public class Login extends JFrame
             {
                 throw new RuntimeException(e);
             }
-
         });
 
         // add panel to frame and make visible

@@ -58,11 +58,13 @@ public class Add extends JFrame
         formPanel.add(lblPassword);
         JPasswordField txtPassword = new JPasswordField();
         formPanel.add(txtPassword);
+
         // make show button for password
         JLabel lblShow = new JLabel("Show Password");
         formPanel.add(lblShow);
         JCheckBox chckPassword = new JCheckBox();
         formPanel.add(chckPassword);
+
         // event for showbutton password
         chckPassword.addActionListener((ActionEvent f) -> {
             if (chckPassword.isSelected())
@@ -87,6 +89,7 @@ public class Add extends JFrame
         // add cancel button
         JButton btnCancel = new JButton("Cancel");
         formPanel.add(btnCancel);
+
         // cancel button action
         btnCancel.addActionListener((ActionEvent g) -> {
             //close website window
@@ -101,6 +104,7 @@ public class Add extends JFrame
         // add confirm button
         JButton btnConfirm = new JButton("Confirm");
         formPanel.add(btnConfirm);
+
         // confirm button action
         btnConfirm.addActionListener((ActionEvent h) -> {
             String site = txtSite.getText();
@@ -130,6 +134,7 @@ public class Add extends JFrame
 
                 // nieuwe button adden op originele frame
                 ReadTxtFile.txtFileHandeling(pathButtonWebsites, false, txtSite.getText());
+
                 //close website window
                 JComponent comp = (JComponent) h.getSource();
                 Window win = SwingUtilities.getWindowAncestor(comp);

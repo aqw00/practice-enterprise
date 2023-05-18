@@ -14,7 +14,7 @@ public class WebsitePageImporter
 
         for (int i = 0; i < (ReadCsvFiles.readFile(csvFile).size()); i++)
         {
-            if(ReadCsvFiles.readFile(csvFile).get(i)[0].equals(siteName))
+            if (ReadCsvFiles.readFile(csvFile).get(i)[0].equals(siteName))
             {
                 url = ReadCsvFiles.readFile(csvFile).get(i)[1];
                 email = ReadCsvFiles.readFile(csvFile).get(i)[2];
@@ -45,9 +45,12 @@ public class WebsitePageImporter
         //TODO: loginButton.submit();
 
         // Wait for the login process to complete
-        try {
+        try
+        {
             Thread.sleep(5000);
-        } catch (InterruptedException e) {
+        }
+        catch (InterruptedException e)
+        {
             e.printStackTrace();
         }
     }

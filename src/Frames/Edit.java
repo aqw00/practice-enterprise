@@ -48,8 +48,10 @@ public class Edit extends JFrame
         cbxSites.setSelectedIndex(7);
         editPanel.add(cbxSites);
 
-        for (int i = 0; i < (ReadCsvFiles.readFile(pathWebsiteInfo).size()); i++) {
-            if (ReadCsvFiles.readFile(pathWebsiteInfo).get(i)[0].equals(cbxSites.getSelectedItem())) {
+        for (int i = 0; i < (ReadCsvFiles.readFile(pathWebsiteInfo).size()); i++)
+        {
+            if (ReadCsvFiles.readFile(pathWebsiteInfo).get(i)[0].equals(cbxSites.getSelectedItem()))
+            {
                 url = ReadCsvFiles.readFile(pathWebsiteInfo).get(i)[1];
                 email = ReadCsvFiles.readFile(pathWebsiteInfo).get(i)[2];
                 password = ReadCsvFiles.readFile(pathWebsiteInfo).get(i)[3];
@@ -73,11 +75,13 @@ public class Edit extends JFrame
         editPanel.add(lblPassword);
         JPasswordField txtPassword = new JPasswordField();
         editPanel.add(txtPassword);
+
         // make show button for password
         JLabel lblShow = new JLabel("Show Password");
         editPanel.add(lblShow);
         JCheckBox chckPassword = new JCheckBox();
         editPanel.add(chckPassword);
+
         // event for showbutton password
         chckPassword.addActionListener((ActionEvent f) -> {
             if (chckPassword.isSelected())
@@ -102,6 +106,7 @@ public class Edit extends JFrame
         // add cancel button
         JButton btnCancel = new JButton("Cancel");
         editPanel.add(btnCancel);
+
         // cancel button action
         btnCancel.addActionListener((ActionEvent g) -> {
             //close website window
@@ -116,6 +121,7 @@ public class Edit extends JFrame
         // add save button
         JButton btnSave = new JButton("Save");
         editPanel.add(btnSave);
+
         // confirm button action
         String finalUrl = url;
         btnSave.addActionListener((ActionEvent h) -> {
@@ -134,11 +140,13 @@ public class Edit extends JFrame
             {
                 lblWarning.setVisible(false);
                 lblWarning.setVisible(false);
+
                 // data opslaan in CSV
                 list.add(Ssite);
                 list.add(Surl);
                 list.add(Suser);
                 list.add(Spassword);
+
                 //verwijder originele lijn uit websiteInfo.csv en buttonWebsites.txt
                 deleteLine(pathWebsiteInfo, pathButtonWebsites, Ssite, Suser, Spassword);
 
@@ -153,10 +161,11 @@ public class Edit extends JFrame
         });
 
         cbxSites.addActionListener((ActionEvent h) -> {
-
             String url2 = "", email2 = "", password2 = "";
-            for (int i = 0; i < (ReadCsvFiles.readFile(pathWebsiteInfo).size()); i++) {
-                if (ReadCsvFiles.readFile(pathWebsiteInfo).get(i)[0].equals(cbxSites.getSelectedItem())) {
+            for (int i = 0; i < (ReadCsvFiles.readFile(pathWebsiteInfo).size()); i++)
+            {
+                if (ReadCsvFiles.readFile(pathWebsiteInfo).get(i)[0].equals(cbxSites.getSelectedItem()))
+                {
                     url2 = ReadCsvFiles.readFile(pathWebsiteInfo).get(i)[1];
                     email2 = ReadCsvFiles.readFile(pathWebsiteInfo).get(i)[2];
                     password2 = ReadCsvFiles.readFile(pathWebsiteInfo).get(i)[3];
