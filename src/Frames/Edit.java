@@ -157,6 +157,9 @@ public class Edit extends JFrame
 
                 //open app window
                 Website.webFrame(pathButtonWebsites, pathWebsiteInfo, list, pathChrome, csvFile, sftpEncPass);
+
+                // clear list
+                list.clear();
             }
         });
 
